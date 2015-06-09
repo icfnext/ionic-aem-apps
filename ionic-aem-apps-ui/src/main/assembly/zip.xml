@@ -40,6 +40,7 @@
             <useProjectArtifact>false</useProjectArtifact>
             <scope>compile</scope>
             <includes>
+                <include>com.icfi.aem.apps.ionic:ionic-aem-apps-api</include>
                 <include>com.icfi.aem.apps.ionic:ionic-aem-apps-core</include>
             </includes>
             <useStrictFiltering>true</useStrictFiltering>

@@ -1,6 +1,4 @@
 <%@page session="false" %>
 <%@include file="/apps/ionic-aem-apps/components/global.jsp" %>
 
-<body>
-<%-- To be implemented by extending resource types --%>
-</body>
+<cq:includeClientLib css="ionic-1.0.0"/>

@@ -4,4 +4,4 @@
           xmlns:jcr="http://www.jcp.org/jcr/1.0"
           cq:isContainer="{Boolean}false"
           jcr:primaryType="cq:Component"
-          sling:resourceSuperType="mobileapps/components/angular/ng-page" />
+          sling:resourceSuperType="beermunity-data-entry-app/components/page/global" />

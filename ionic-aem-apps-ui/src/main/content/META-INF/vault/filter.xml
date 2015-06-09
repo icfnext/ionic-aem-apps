@@ -4,6 +4,6 @@
     <filter root="/etc/designs/ionic-aem-apps">
         <exclude pattern="/etc/designs/ionic-aem-apps/jcr:content(/.*)?"/>
     </filter>
+    <filter root="/etc/clientlibs/ionic-aem-apps"/>
     <filter root="/etc/packages/bedrock/bedrock-ui-${bedrock.version}.zip"/>
-    <filter root="/etc/packages/multicompositeaddon/multicomposite-addon-${multicompositeaddon.version}.zip"/>
 </workspaceFilter>

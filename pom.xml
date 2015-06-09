@@ -17,6 +17,7 @@
     <name>Ionic AEM Apps AEM Website</name>
 
     <modules>
+        <module>ionic-aem-apps-api</module>
         <module>ionic-aem-apps-core</module>
         <module>ionic-aem-apps-ui</module>
     </modules>
@@ -44,11 +45,13 @@
     </pluginRepositories>
 
     <properties>
+        <api.artifactId>ionic-aem-apps-api</api.artifactId>
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
         <bedrock.version>3.3.0</bedrock.version>
         <component.plugin.version>3.1.0</component.plugin.version>
+        <ionicaemapps.api.version>1.0.0-SNAPSHOT</ionicaemapps.api.version>
 
         <!-- defaults -->
         <package.skip>true</package.skip>
@@ -120,6 +123,13 @@
                 <artifactId>bedrock-ui</artifactId>
                 <version>${bedrock.version}</version>
                 <type>zip</type>
+            </dependency>
+
+            <!-- AEM Apps Libraries -->
+            <dependency>
+                <groupId>com.adobe.cq.mobile</groupId>
+                <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
+                <version>6.0.49-NPR-4558-R008</version>
             </dependency>
 
             <!-- Component Plugin -->

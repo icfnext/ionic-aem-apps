@@ -28,7 +28,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>${project.parent.organization.name}</Bundle-Vendor>
-                        <Export-Package>!*.impl,com.icfi.aem.apps.ionic.*</Export-Package>
+                        <Export-Package>!*.impl,com.icfi.aem.apps.ionic.core.*</Export-Package>
                         <Import-Package>!com.citytechinc.aem.bedrock.core.components.*,!javassist</Import-Package>
                         <Require-Bundle>org.apache.sling.models.api</Require-Bundle>
                         <Sling-Model-Packages>com.icfi.aem.apps.ionic</Sling-Model-Packages>
@@ -163,6 +163,19 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+        </dependency>
+
+        <!-- API -->
+        <dependency>
+            <groupId>com.icfi.aem.apps.ionic</groupId>
+            <artifactId>ionic-aem-apps-api</artifactId>
+            <version>${ionicaemapps.api.version}</version>
+        </dependency>
+
+        <!-- AEM Apps Libraries -->
+        <dependency>
+            <groupId>com.adobe.cq.mobile</groupId>
+            <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
         </dependency>
 
         <!-- Bedrock library -->

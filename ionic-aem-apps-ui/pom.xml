@@ -180,6 +180,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.icfi.aem.apps.ionic</groupId>
+            <artifactId>ionic-aem-apps-api</artifactId>
+            <version>${ionicaemapps.api.version}</version>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${core.artifactId}</artifactId>
             <version>${project.version}</version>
