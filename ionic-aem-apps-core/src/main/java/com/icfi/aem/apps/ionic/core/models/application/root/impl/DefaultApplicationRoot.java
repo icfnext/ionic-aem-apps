@@ -3,6 +3,7 @@ package com.icfi.aem.apps.ionic.core.models.application.root.impl;
 import com.adobe.cq.mobile.angular.data.util.FrameworkContentExporterUtils;
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState;
 import com.icfi.aem.apps.ionic.core.models.application.state.impl.DefaultApplicationState;
@@ -48,12 +49,12 @@ public class DefaultApplicationRoot implements ApplicationRoot {
 
     @Override
     public String getApplicationName() {
-        return rootPage.get("ionicApplicationName", "Ionic Application");
+        return rootPage.get("ionicApplicationName", "IonicApplication");
     }
 
     @Override
     public Set<String> getRequiredAngularModules() {
-        return null;
+        return Sets.newHashSet(rootPage.getAsList("requiredAngularModules", String.class));
     }
 
     private List<ApplicationState> buildApplicationStates(List<PageDecorator> pages) {
