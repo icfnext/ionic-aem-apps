@@ -15,10 +15,13 @@
 
             $stateProvider
             <c:forEach var="applicationState" items="${applicationRootComponent.applicationRoot.applicationStates}">
-                .state( '${applicationState.id}', {
-                    url: '${applicationState.url}',
-                    templateUrl: '${applicationState.template}'
-                    } )
+                <c:if test="${!applicationState.structuralState}">
+                    .state( '${applicationState.id}', {
+                        abstract: ${applicationState.abstract},
+                        url: '${applicationState.url}',
+                        templateUrl: '${applicationState.template}'
+                        } )
+                </c:if>
             </c:forEach>
             ;
 

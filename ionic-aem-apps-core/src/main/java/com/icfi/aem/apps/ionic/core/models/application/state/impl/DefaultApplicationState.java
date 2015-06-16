@@ -15,23 +15,41 @@ public class DefaultApplicationState implements ApplicationState {
     private final PageDecorator rootPage;
 
     private String stateId;
+    private String url;
 
     public DefaultApplicationState(PageDecorator statePage, PageDecorator rootPage) {
         this.statePage = statePage;
         this.rootPage = rootPage;
     }
 
-    @Override
     public String getUrl() {
-        return statePage.getPath();
+        if (url != null) {
+            return url;
+        }
+
+        PageDecorator currentPage = statePage;
+
+        List<String> parents = Lists.newArrayList();
+
+        while (currentPage != null && !currentPage.getContentResource().isResourceType(ApplicationRoot.RESOURCE_TYPE) && (currentPage.equals(statePage) || currentPage.get("isStructuralState", false))) {
+            if (currentPage.get("isSlugState", false)) {
+                parents.add(":" + currentPage.getName());
+            }
+            else {
+                parents.add(currentPage.getName());
+            }
+            currentPage = currentPage.getParent();
+        }
+
+        url = "/" + StringUtils.join(Lists.reverse(parents), "/");
+
+        return url;
     }
 
-    @Override
     public String getTemplate() {
         return rootPage.getName() + statePage.getPath().substring(rootPage.getPath().length()) + ".template.html";
     }
 
-    @Override
     public String getId() {
         if (stateId != null) {
             return stateId;
@@ -41,8 +59,10 @@ public class DefaultApplicationState implements ApplicationState {
 
         List<String> parents = Lists.newArrayList();
 
-        while(currentPage != null && !currentPage.getContentResource().isResourceType(ApplicationRoot.RESOURCE_TYPE)){
-            parents.add(currentPage.getName());
+        while(currentPage != null && !currentPage.getContentResource().isResourceType(ApplicationRoot.RESOURCE_TYPE)) {
+            if (!currentPage.get("isStructuralState", false)) {
+                parents.add(currentPage.getName());
+            }
             currentPage = currentPage.getParent();
         }
 
@@ -50,8 +70,15 @@ public class DefaultApplicationState implements ApplicationState {
         return stateId;
     }
 
-    @Override
     public Resource getContentResource() {
         return statePage.getContentResource();
+    }
+
+    public boolean isAbstract() {
+        return statePage.get("isAbstract", false);
+    }
+
+    public boolean isStructuralState() {
+        return statePage.get("isStructuralState", false);
     }
 }

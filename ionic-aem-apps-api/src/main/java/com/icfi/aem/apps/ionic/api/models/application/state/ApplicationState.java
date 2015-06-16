@@ -14,4 +14,8 @@ public interface ApplicationState {
 
     public Resource getContentResource();
 
+    public boolean isAbstract();
+
+    public boolean isStructuralState();
+
 }

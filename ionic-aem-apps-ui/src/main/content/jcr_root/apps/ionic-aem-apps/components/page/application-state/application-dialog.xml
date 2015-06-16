@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Panel"
+          title="Application State">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <isAbstract
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Abstract State"
+                    fieldDescription="Indicates that the state represented by this state content node is an abstract state"
+                    inputValue="true"
+                    name="./isAbstractState"
+                    type="checkbox"
+                    xtype="selection"/>
+            <isSlug
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Slug State"
+                    fieldDescription="Indicates that the path segment represented by this state should be rendered as a slug whose data will later be accessible via the $stateParams service."
+                    inputValue="true"
+                    name="./isSlugState"
+                    type="checkbox"
+                    xtype="selection"/>
+            <isStructuralState
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Structural State"
+                    fieldDescription="Indicates that this state content node exists solely to provide structure to the state URL and should not be produced as part of the state rendering."
+                    inputValue="true"
+                    name="./isStructuralState"
+                    type="checkbox"
+                    xtype="selection"/>
+        </items>
+</jcr:root>

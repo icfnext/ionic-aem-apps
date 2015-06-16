@@ -2,7 +2,6 @@
 <%@include file="/apps/ionic-aem-apps/components/global.jsp" %>
 <bedrock:component className="com.icfi.aem.apps.ionic.core.components.page.applicationroot.ApplicationRootComponent" name="applicationRootComponent" />
 
-<c:set var="isAppMode" scope="request" value="${isPublish || isPreviewMode}"/>
 <body ng-app="${applicationRootComponent.applicationRoot.applicationName}" <c:if test="${isAppMode}">ng-cloak</c:if>>
 
     <c:choose>
