@@ -17,6 +17,7 @@
             </c:if>
 
             <cq:includeClientLib js="ionic-1.0.0"/>
+            <cq:includeClientLib js="ionic-aem-apps.controllers"/>
             <cq:include script="js_application_clientlibs.jsp"/>
             <script src="<c:out value='${currentPage.name}'/>.angular-app-module.js"></script>
         </c:when>

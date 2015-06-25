@@ -19,7 +19,8 @@
                     .state( '${applicationState.id}', {
                         abstract: ${applicationState.abstract},
                         url: '${applicationState.url}',
-                        templateUrl: '${applicationState.template}'
+                        templateUrl: '${applicationState.template}',
+                        controller: 'LifecycleBroadcastCtrl'
                         } )
                 </c:if>
             </c:forEach>

@@ -1,0 +1,1 @@
+lifecycleBroadcastCtrl.js

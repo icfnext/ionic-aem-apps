@@ -31,7 +31,6 @@ public class ApplicationStateAdapterFactory implements AdapterFactory {
     private static final ApplicationStatePagePredicate applicationStatePagePredicate = new ApplicationStatePagePredicate();
     private static final ApplicationRootPagePredicate applicationRootPagePredicate = new ApplicationRootPagePredicate();
 
-    @Override
     public <AdapterType> AdapterType getAdapter(Object adaptable, Class<AdapterType> type) {
         if (adaptable instanceof Resource) {
             return getPageDecoratorAdapter(((Resource) adaptable).adaptTo(PageDecorator.class), type);

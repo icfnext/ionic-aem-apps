@@ -81,4 +81,5 @@ public class DefaultApplicationState implements ApplicationState {
     public boolean isStructuralState() {
         return statePage.get("isStructuralState", false);
     }
+
 }

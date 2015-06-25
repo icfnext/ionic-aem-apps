@@ -3,7 +3,6 @@ package com.icfi.aem.apps.ionic.core.adapters;
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
 import com.icfi.aem.apps.ionic.core.models.application.root.impl.DefaultApplicationRoot;
 import com.icfi.aem.apps.ionic.core.predicates.application.root.ApplicationRootPagePredicate;
-import com.icfi.aem.apps.ionic.core.services.component.ComponentResolverService;
 import org.apache.felix.scr.annotations.*;
 import org.apache.sling.api.SlingConstants;
 import org.apache.sling.api.adapter.AdapterFactory;
@@ -26,11 +25,6 @@ public class ApplicationRootAdapterFactory implements AdapterFactory {
 
     private static final ApplicationRootPagePredicate applicationRootPagePredicate = new ApplicationRootPagePredicate();
 
-    @Reference
-    private ComponentResolverService resolverService;
-
-
-    @Override
     public <AdapterType> AdapterType getAdapter(Object adaptable, Class<AdapterType> type) {
         if (adaptable instanceof Resource) {
             return getPageDecoratorAdapter(((Resource) adaptable).adaptTo(PageDecorator.class), type);
@@ -44,7 +38,7 @@ public class ApplicationRootAdapterFactory implements AdapterFactory {
 
     public <AdapterType> AdapterType getPageDecoratorAdapter(PageDecorator pageDecorator, Class<AdapterType> type) {
         if (applicationRootPagePredicate.apply(pageDecorator)) {
-            return (AdapterType) new DefaultApplicationRoot(pageDecorator,resolverService);
+            return (AdapterType) new DefaultApplicationRoot(pageDecorator);
         }
 
         return null;
