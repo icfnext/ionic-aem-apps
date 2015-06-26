@@ -1,26 +1,29 @@
 package com.icfi.aem.apps.ionic.api.models.application.state;
 
+import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import org.apache.sling.api.resource.Resource;
 
 import java.util.Set;
 
 public interface ApplicationState {
 
-    public static final String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-state";
-    public static final String ANGULAR_CONTROLLER_KEY = "angularController";
+    String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-state";
+    String ANGULAR_CONTROLLER_KEY = "angularController";
 
-    public String getUrl();
+    String getUrl();
 
-    public String getTemplate();
+    String getTemplate();
 
-    public String getId();
+    String getId();
 
-    public Resource getContentResource();
+    Resource getContentResource();
 
-    public String getAngularController();
+    String getAngularController();
 
-    public boolean isAbstract();
+    boolean isAbstract();
 
-    public boolean isStructuralState();
+    boolean isStructuralState();
+
+    ApplicationRoot getApplicationRoot();
 
 }

@@ -81,6 +81,10 @@ public class DefaultApplicationRoot implements ApplicationRoot {
 
     }
 
+    public String getPath() {
+        return rootPage.getPath();
+    }
+
     private List<ApplicationState> buildApplicationStates(List<PageDecorator> pages) {
 
         List<ApplicationState> states = Lists.newArrayList();

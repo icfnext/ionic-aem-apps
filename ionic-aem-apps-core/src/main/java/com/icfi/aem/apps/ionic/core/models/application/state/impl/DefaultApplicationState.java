@@ -93,6 +93,10 @@ public class DefaultApplicationState implements ApplicationState {
         return statePage.get("isStructuralState", false);
     }
 
+    public ApplicationRoot getApplicationRoot() {
+        return rootPage.adaptTo(ApplicationRoot.class);
+    }
+
     protected Optional<String> getAngularControllerOptional() {
 
         if (angularController == null) {

@@ -129,6 +129,10 @@
             <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.rewriter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
@@ -143,6 +147,10 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cocoon</groupId>
+            <artifactId>cocoon-xml</artifactId>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>

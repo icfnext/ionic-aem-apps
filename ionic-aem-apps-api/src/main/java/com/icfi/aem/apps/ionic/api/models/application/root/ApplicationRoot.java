@@ -7,19 +7,20 @@ import java.util.Set;
 
 public interface ApplicationRoot {
 
-    public static final String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-root";
-    public static final String ANGULAR_REQUIRED_MODULES_KEY = "requiredAngularModules";
+    String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-root";
+    String ANGULAR_REQUIRED_MODULES_KEY = "requiredAngularModules";
 
-    public String getInitialStateUrl();
+    String getInitialStateUrl();
 
-    public String getSanatizedControllerName();
+    String getSanatizedControllerName();
 
-    public String getRelativePathToRoot();
+    String getRelativePathToRoot();
 
-    public List<ApplicationState> getApplicationStates();
+    List<ApplicationState> getApplicationStates();
 
-    public String getApplicationName();
+    String getApplicationName();
 
-    public Set<String> getRequiredAngularModules();
+    Set<String> getRequiredAngularModules();
 
+    String getPath();
 }
