@@ -3,7 +3,6 @@ package com.icfi.aem.apps.ionic.core.models.application.root.impl;
 import com.adobe.cq.mobile.angular.data.util.FrameworkContentExporterUtils;
 import com.citytechinc.aem.bedrock.api.node.ComponentNode;
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
-import com.citytechinc.aem.bedrock.core.node.predicates.ComponentNodePropertyExistsPredicate;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -18,8 +17,14 @@ import java.util.Set;
 
 public class DefaultApplicationRoot implements ApplicationRoot {
 
-    private static final String ANGULAR_REQUIRED_MODULES_KEY = "requiredAngularModules";
-    private static final Predicate<ComponentNode> SLING_RESOURCE_TYPE_EXISTS_PREDICATE = new ComponentNodePropertyExistsPredicate("sling:resourceType");
+    private static final Predicate<ComponentNode> COMPONENT_REQUIRES_ANGULAR_MODULES_PREDICATE = new Predicate<ComponentNode>() {
+        public boolean apply(ComponentNode componentNode) {
+            TypedResource typedResource = componentNode.getResource().adaptTo(TypedResource.class);
+
+            return typedResource != null && !typedResource.getResourceType().getAsListInherited(ANGULAR_REQUIRED_MODULES_KEY, String.class).isEmpty();
+
+        }
+    };
 
     private final PageDecorator rootPage;
 
@@ -64,11 +69,11 @@ public class DefaultApplicationRoot implements ApplicationRoot {
 
         applicationModules = Sets.newHashSet();
 
-        for (ComponentNode currentChildNode : rootPage.adaptTo(ComponentNode.class).getParent().get().findDescendants(SLING_RESOURCE_TYPE_EXISTS_PREDICATE)) {
+        for (ComponentNode currentChildNode : rootPage.adaptTo(ComponentNode.class).getParent().get().findDescendants(COMPONENT_REQUIRES_ANGULAR_MODULES_PREDICATE)) {
             TypedResource typedResource = currentChildNode.getResource().adaptTo(TypedResource.class);
 
             if (typedResource != null) {
-                applicationModules.addAll(typedResource.getResourceType().getAsList(ANGULAR_REQUIRED_MODULES_KEY, String.class));
+                applicationModules.addAll(typedResource.getResourceType().getAsListInherited(ANGULAR_REQUIRED_MODULES_KEY, String.class));
             }
         }
 

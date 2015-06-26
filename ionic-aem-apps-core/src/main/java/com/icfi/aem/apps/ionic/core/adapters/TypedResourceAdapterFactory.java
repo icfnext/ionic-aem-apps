@@ -43,7 +43,7 @@ public class TypedResourceAdapterFactory implements AdapterFactory {
 
     public <AdapterType> AdapterType getResourceAdapter(Resource resource, Class<AdapterType> type) {
         try {
-            if (StringUtils.isNotBlank(resource.getResourceType())) {
+            if (StringUtils.isNotBlank(resource.getResourceType()) && getAdministrativeResourceResolver().getResource(resource.getResourceType()) != null) {
                 return (AdapterType) new DefaultTypedResource(resource, getAdministrativeResourceResolver());
             }
         } catch (LoginException e) {

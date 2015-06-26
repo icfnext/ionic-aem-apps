@@ -8,6 +8,7 @@ import java.util.Set;
 public interface ApplicationRoot {
 
     public static final String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-root";
+    public static final String ANGULAR_REQUIRED_MODULES_KEY = "requiredAngularModules";
 
     public String getInitialStateUrl();
 

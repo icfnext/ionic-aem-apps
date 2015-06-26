@@ -1,9 +1,11 @@
 package com.icfi.aem.apps.ionic.core.models.application.state.impl;
 
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState;
+import com.icfi.aem.apps.ionic.api.resource.TypedResource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 
@@ -16,6 +18,7 @@ public class DefaultApplicationState implements ApplicationState {
 
     private String stateId;
     private String url;
+    private Optional<String> angularController;
 
     public DefaultApplicationState(PageDecorator statePage, PageDecorator rootPage) {
         this.statePage = statePage;
@@ -74,6 +77,14 @@ public class DefaultApplicationState implements ApplicationState {
         return statePage.getContentResource();
     }
 
+    public String getAngularController() {
+        return getAngularControllerOptional().orNull();
+    }
+
+    public boolean isHasAngularController() {
+        return getAngularControllerOptional().isPresent();
+    }
+
     public boolean isAbstract() {
         return statePage.get("isAbstract", false);
     }
@@ -82,4 +93,17 @@ public class DefaultApplicationState implements ApplicationState {
         return statePage.get("isStructuralState", false);
     }
 
+    protected Optional<String> getAngularControllerOptional() {
+
+        if (angularController == null) {
+            TypedResource typedResource = getContentResource().adaptTo(TypedResource.class);
+
+            if (typedResource != null) {
+                angularController = typedResource.getResourceType().getInherited(ANGULAR_CONTROLLER_KEY, String.class);
+            }
+        }
+
+        return angularController;
+
+    }
 }

@@ -19,8 +19,10 @@
                     .state( '${applicationState.id}', {
                         abstract: ${applicationState.abstract},
                         url: '${applicationState.url}',
-                        templateUrl: '${applicationState.template}',
-                        controller: 'LifecycleBroadcastCtrl'
+                        templateUrl: '${applicationState.template}'<c:if test="${applicationState.hasAngularController}">,
+                            controller: '${applicationState.angularController}'
+                        </c:if>
+
                         } )
                 </c:if>
             </c:forEach>
