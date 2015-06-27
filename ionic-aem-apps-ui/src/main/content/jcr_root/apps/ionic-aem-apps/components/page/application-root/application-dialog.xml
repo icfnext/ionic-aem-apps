@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Panel"
+          title="Application Root">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <initialState
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Initial State"
+                    fieldDescription="Indicates the state the application should move to upon initialization"
+                    name="./initialState"
+                    xtype="pathfield"/>
+        </items>
+</jcr:root>

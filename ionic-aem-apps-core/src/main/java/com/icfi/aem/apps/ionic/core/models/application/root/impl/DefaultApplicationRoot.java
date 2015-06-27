@@ -3,9 +3,11 @@ package com.icfi.aem.apps.ionic.core.models.application.root.impl;
 import com.adobe.cq.mobile.angular.data.util.FrameworkContentExporterUtils;
 import com.citytechinc.aem.bedrock.api.node.ComponentNode;
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.icfi.aem.apps.ionic.api.errors.InvalidApplicationConfigurationException;
 import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState;
 import com.icfi.aem.apps.ionic.api.resource.TypedResource;
@@ -40,16 +42,14 @@ public class DefaultApplicationRoot implements ApplicationRoot {
         this.rootPage = rootPage;
     }
 
-    public String getInitialStateUrl() {
-        //TODO: Allow for configurability
-        for (ApplicationState currentApplicationState : getApplicationStates()) {
-            if (!currentApplicationState.isAbstract() && !currentApplicationState.isStructuralState()) {
-                return currentApplicationState.getUrl();
-            }
+    public String getInitialStateUrl() throws InvalidApplicationConfigurationException {
+        Optional<String> initialStateOptional = rootPage.get("initialState", String.class);
+
+        if (initialStateOptional.isPresent() && initialStateOptional.get().startsWith(rootPage.getPath())) {
+            return initialStateOptional.get().substring(rootPage.getPath().length());
         }
 
-        LOG.error("Initial Application State unconfigured or unknown");
-        return null;
+        throw new InvalidApplicationConfigurationException("initialState is unconfigured for the Application Root");
     }
 
     public String getSanatizedControllerName() {

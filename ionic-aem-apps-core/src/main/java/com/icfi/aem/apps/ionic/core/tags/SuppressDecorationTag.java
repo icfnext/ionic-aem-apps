@@ -8,6 +8,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import static com.day.cq.wcm.tags.DefineObjectsTag.DEFAULT_REQUEST_NAME;
 
+//TODO: Some more testing needs to be done around how this behaves - 1) I don't know if we really need to explicitly set this back in the end tag, it's probably irrelevant at that point.  2) I'd like to see if we could get this to disable all the way down.  I think it will only disable the next include as it is written currently.
 public class SuppressDecorationTag extends TagSupport {
 
     private String originalTag;
