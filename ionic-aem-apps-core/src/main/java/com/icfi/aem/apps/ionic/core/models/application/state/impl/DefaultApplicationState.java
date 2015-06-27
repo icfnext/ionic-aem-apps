@@ -34,13 +34,16 @@ public class DefaultApplicationState implements ApplicationState {
 
         List<String> parents = Lists.newArrayList();
 
-        while (currentPage != null && !currentPage.getContentResource().isResourceType(ApplicationRoot.RESOURCE_TYPE) && (currentPage.equals(statePage) || currentPage.get("isStructuralState", false))) {
+        while (currentPage != null &&
+                currentPage.getContentResource().isResourceType(ApplicationState.RESOURCE_TYPE) &&
+                (currentPage.getPath().equals(statePage.getPath()) || currentPage.get("isStructuralState", false))) {
             if (currentPage.get("isSlugState", false)) {
                 parents.add(":" + currentPage.getName());
             }
             else {
                 parents.add(currentPage.getName());
             }
+
             currentPage = currentPage.getParent();
         }
 
@@ -86,7 +89,7 @@ public class DefaultApplicationState implements ApplicationState {
     }
 
     public boolean isAbstract() {
-        return statePage.get("isAbstract", false);
+        return statePage.get("isAbstractState", false);
     }
 
     public boolean isStructuralState() {

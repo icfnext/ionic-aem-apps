@@ -4,6 +4,8 @@
 
 <c:forEach var="applicationState" items="${applicationRootComponent.applicationRoot.applicationStates}">
     <script type="text/ng-template" id="${applicationState.template}">
-        <sling:include resource="${applicationState.contentResource}" addSelectors="template" />
+        <ionic:suppressDecoration>
+            <sling:include resource="${applicationState.contentResource}" addSelectors="template" />
+        </ionic:suppressDecoration>
     </script>
 </c:forEach>

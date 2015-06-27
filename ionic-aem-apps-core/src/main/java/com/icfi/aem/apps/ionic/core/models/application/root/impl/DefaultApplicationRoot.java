@@ -11,11 +11,15 @@ import com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState;
 import com.icfi.aem.apps.ionic.api.resource.TypedResource;
 import com.icfi.aem.apps.ionic.core.models.application.state.impl.DefaultApplicationState;
 import org.apache.sling.api.resource.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Set;
 
 public class DefaultApplicationRoot implements ApplicationRoot {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultApplicationRoot.class);
 
     private static final Predicate<ComponentNode> COMPONENT_REQUIRES_ANGULAR_MODULES_PREDICATE = new Predicate<ComponentNode>() {
         public boolean apply(ComponentNode componentNode) {
@@ -37,7 +41,15 @@ public class DefaultApplicationRoot implements ApplicationRoot {
     }
 
     public String getInitialStateUrl() {
-        return getApplicationStates().get(0).getUrl();
+        //TODO: Allow for configurability
+        for (ApplicationState currentApplicationState : getApplicationStates()) {
+            if (!currentApplicationState.isAbstract() && !currentApplicationState.isStructuralState()) {
+                return currentApplicationState.getUrl();
+            }
+        }
+
+        LOG.error("Initial Application State unconfigured or unknown");
+        return null;
     }
 
     public String getSanatizedControllerName() {
