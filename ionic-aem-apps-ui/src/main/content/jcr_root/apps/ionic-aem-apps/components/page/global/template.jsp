@@ -5,7 +5,7 @@
         <cq:include path="ion-content" resourceType="ionic-aem-apps/components/content/ioncontent" />
     </c:when>
     <c:otherwise>
-        <ion-view> view-title="<bedrock:property propertyName="pageTitle" />">
+        <ion-view view-title="<bedrock:property propertyName="pageTitle" />">
             <ionic:suppressDecoration>
                 <cq:include path="ion-content" resourceType="ionic-aem-apps/components/content/ioncontent" />
             </ionic:suppressDecoration>
