@@ -61,6 +61,14 @@ public class DefaultApplicationRoot implements ApplicationRoot {
         return FrameworkContentExporterUtils.getRelativePathToRootLevel(rootPage.adaptTo(Resource.class));
     }
 
+    public String getRelativePathToState(String absolutePathToState) {
+        if (absolutePathToState != null && absolutePathToState.startsWith(getPath())) {
+            return absolutePathToState.substring(getPath().length());
+        }
+
+        return absolutePathToState;
+    }
+
     public List<ApplicationState> getApplicationStates() {
         if (applicationStates == null) {
             applicationStates = buildApplicationStates(rootPage.getChildren());
