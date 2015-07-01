@@ -18,4 +18,8 @@ public class IonContent extends AbstractComponent {
         return get("scrollDisabled", false);
     }
 
+    public String getPageName() {
+        return getCurrentPage().getName();
+    }
+
 }
