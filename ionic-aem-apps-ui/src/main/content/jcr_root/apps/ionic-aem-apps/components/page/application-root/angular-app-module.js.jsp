@@ -32,4 +32,5 @@
 
         } );
 
+    <cq:include script="angular-app-module-suffix.jsp"/>
 } )( angular );

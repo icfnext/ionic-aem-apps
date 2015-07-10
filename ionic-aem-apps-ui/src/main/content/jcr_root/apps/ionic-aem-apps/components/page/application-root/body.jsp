@@ -2,7 +2,7 @@
 <%@include file="/apps/ionic-aem-apps/components/global.jsp" %>
 <bedrock:component className="com.icfi.aem.apps.ionic.core.components.page.applicationroot.ApplicationRootComponent" name="applicationRootComponent" />
 
-<body ng-app="${applicationRootComponent.applicationRoot.applicationName}" <c:if test="${isAppMode}">ng-cloak</c:if>>
+<body <c:if test="${isAppMode}">ng-app="${applicationRootComponent.applicationRoot.applicationName}" ng-cloak</c:if>>
 
     <c:choose>
         <c:when test="${isAppMode}">
@@ -26,6 +26,7 @@
         </c:otherwise>
     </c:choose>
 
+    <!-- TODO: Is this necessary?  It seems to be including some OOB client lib that I don't think we need -->
     <cq:include script="js_clientlibs.jsp"/>
 
 </body>

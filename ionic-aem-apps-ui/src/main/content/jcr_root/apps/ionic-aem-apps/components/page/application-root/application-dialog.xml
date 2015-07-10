@@ -9,5 +9,11 @@
                     fieldDescription="Indicates the state the application should move to upon initialization"
                     name="./initialState"
                     xtype="pathfield"/>
+            <applicationName
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Application Module Name"
+                    fieldDescription="The name of the Angular Application Module for this application.  Defaults to IonicApplication"
+                    name="./ionicApplicationName"
+                    xtype="textfield"/>
         </items>
 </jcr:root>
