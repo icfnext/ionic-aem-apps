@@ -24,6 +24,17 @@
 
     <repositories>
         <repository>
+            <id>localinstance</id>
+            <name>AEM localinstance</name>
+            <url>http://localhost:4502/maven/repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>citytech-public</id>
             <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
         </repository>
@@ -34,6 +45,17 @@
     </repositories>
 
     <pluginRepositories>
+        <pluginRepository>
+            <id>localinstance</id>
+            <name>AEM localinstance</name>
+            <url>http://localhost:4502/maven/repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
         <pluginRepository>
             <id>citytech-public</id>
             <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
@@ -118,6 +140,7 @@
                 <artifactId>bedrock-api</artifactId>
                 <version>${bedrock.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.citytechinc.aem.bedrock</groupId>
                 <artifactId>bedrock-ui</artifactId>
@@ -130,6 +153,12 @@
                 <groupId>com.adobe.cq.mobile</groupId>
                 <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
                 <version>6.0.49-NPR-4558-R008</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.day.cq</groupId>
+                <artifactId>cq-content-sync</artifactId>
+                <version>5.8.18</version>
             </dependency>
 
             <!-- Component Plugin -->

@@ -193,6 +193,11 @@
             <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.day.cq</groupId>
+            <artifactId>cq-content-sync</artifactId>
+        </dependency>
+
         <!-- Bedrock library -->
         <dependency>
             <groupId>com.citytechinc.aem.bedrock</groupId>
@@ -207,6 +212,16 @@
         <dependency>
             <groupId>com.citytechinc.cq.cq-component-plugin</groupId>
             <artifactId>cq-component-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>aem-api</artifactId>
+            <version>6.0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>aem-api</artifactId>
+            <version>6.0.0.1</version>
         </dependency>
     </dependencies>
 </project>
