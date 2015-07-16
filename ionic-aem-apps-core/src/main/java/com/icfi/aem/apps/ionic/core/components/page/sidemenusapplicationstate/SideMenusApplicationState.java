@@ -9,21 +9,11 @@ import com.citytechinc.cq.component.annotations.widgets.Selection;
 
 import java.util.List;
 
-@Component("Side Menus Application State")
 public class SideMenusApplicationState extends AbstractComponent {
 
     public static final String LEFT_MENU_SIDE = "left";
     public static final String RIGHT_MENU_SIDE = "right";
 
-    @DialogField
-    @DateTime
-    @Selection(
-            type = Selection.CHECKBOX,
-            options = {
-                    @Option(text = "Left", value = SideMenusApplicationState.LEFT_MENU_SIDE),
-                    @Option(text = "Right", value = SideMenusApplicationState.RIGHT_MENU_SIDE)
-            }
-    )
     public List<String> getMenuSides() {
         return getAsList("menuSides", String.class);
     }

@@ -16,7 +16,7 @@
         </c:if>
     </c:when>
     <c:otherwise>
-        </ion-side-menus>
+        <ion-side-menus>
             <ion-side-menu-content>
                 <cq:include script="sidemenuheader.jsp"/>
                 <cq:include script="sidemenucontent.jsp"/>

@@ -8,9 +8,11 @@
         <c:when test="${isAppMode}">
             <ion-nav-view></ion-nav-view>
 
+            <%--
             <c:if test="${isPreviewMode}">
                 <cq:include script="previewtemplates.jsp" />
             </c:if>
+            --%>
 
             <c:if test="${isPublish}">
                 <script type="text/javascript" src="/cordova.js"></script>
