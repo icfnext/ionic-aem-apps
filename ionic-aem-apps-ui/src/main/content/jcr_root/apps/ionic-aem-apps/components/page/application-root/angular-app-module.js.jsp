@@ -19,8 +19,16 @@
                     .state( '${applicationState.id}', {
                         abstract: ${applicationState.abstract},
                         url: '${applicationState.url}',
-                        templateUrl: '${applicationState.template}'<c:if test="${applicationState.hasAngularController}">,
-                            controller: '${applicationState.angularController}'
+                        <c:choose>
+                            <c:when test="${isPreviewMode}">
+                                templateUrl: '${applicationState.path}.template.html'
+                            </c:when>
+                            <c:otherwise>
+                                templateUrl: '${applicationState.template}'
+                            </c:otherwise>
+                        </c:choose>
+                        <c:if test="${applicationState.hasAngularController}">
+                            ,controller: '${applicationState.angularController}'
                         </c:if>
 
                         } )

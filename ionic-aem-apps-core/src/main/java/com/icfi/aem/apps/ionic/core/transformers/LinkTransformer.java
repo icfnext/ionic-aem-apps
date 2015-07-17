@@ -1,7 +1,7 @@
 package com.icfi.aem.apps.ionic.core.transformers;
 
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
 import com.day.cq.wcm.api.WCMMode;
+import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState;
 import org.apache.cocoon.xml.sax.AbstractSAXPipe;
 import org.apache.sling.api.resource.Resource;
@@ -29,7 +29,7 @@ public class LinkTransformer extends AbstractSAXPipe implements Transformer {
         WCMMode currentMode = WCMMode.fromRequest(processingContext.getRequest());
 
         if (WCMMode.PREVIEW.equals(currentMode) || WCMMode.DISABLED.equals(currentMode)) {
-            if (requestedResource != null && requestedResource.isResourceType(ApplicationState.RESOURCE_TYPE)) {
+            if (requestedResource != null && (requestedResource.isResourceType(ApplicationRoot.RESOURCE_TYPE) || requestedResource.isResourceType(ApplicationState.RESOURCE_TYPE))) {
                 transform = true;
             }
         }

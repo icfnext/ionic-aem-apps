@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Panel"
+          title="Side Menu Configuration">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <menuSides fieldLabel="Enabled Menus" allowBlank="{Boolean}true" hideLabel="{Boolean}false" jcr:primaryType="cq:Widget" name="./menuSides" type="checkbox" xtype="selection">
+            <options jcr:primaryType="cq:WidgetCollection">
+                <option0 jcr:primaryType="nt:unstructured" text="Left" value="left"/>
+                <option1 jcr:primaryType="nt:unstructured" text="Right" value="right"/>
+            </options>
+        </menuSides>
+    </items>
+</jcr:root>

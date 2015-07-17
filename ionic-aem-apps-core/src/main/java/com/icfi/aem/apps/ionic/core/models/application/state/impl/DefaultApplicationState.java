@@ -76,6 +76,10 @@ public class DefaultApplicationState implements ApplicationState {
         return stateId;
     }
 
+    public String getPath() {
+        return statePage.getPath();
+    }
+
     public Resource getContentResource() {
         return statePage.getContentResource();
     }

@@ -2,10 +2,12 @@
 %><%@include file="/apps/ionic-aem-apps/components/global.jsp" %>
 <c:choose>
     <c:when test="${!isAppMode}">
-        <cq:include path="ion-content" resourceType="ionic-aem-apps/components/content/ioncontent" />
+        <div data-statename="${currentPage.name}">
+            <cq:include path="ion-content" resourceType="ionic-aem-apps/components/content/ioncontent" />
+        </div>
     </c:when>
     <c:otherwise>
-        <ion-view view-title="<bedrock:property propertyName="pageTitle" />">
+        <ion-view data-statename="${currentPage.name}" view-title="<bedrock:property propertyName="pageTitle" />">
             <ionic:suppressDecoration>
                 <cq:include path="ion-content" resourceType="ionic-aem-apps/components/content/ioncontent" />
             </ionic:suppressDecoration>

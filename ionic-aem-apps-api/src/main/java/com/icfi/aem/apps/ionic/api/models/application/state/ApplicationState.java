@@ -16,6 +16,8 @@ public interface ApplicationState {
 
     String getId();
 
+    String getPath();
+
     Resource getContentResource();
 
     String getAngularController();
