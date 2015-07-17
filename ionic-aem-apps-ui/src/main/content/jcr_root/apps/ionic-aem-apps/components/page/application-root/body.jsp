@@ -19,7 +19,7 @@
             </c:if>
 
             <cq:includeClientLib js="ionic-1.0.0"/>
-            <cq:includeClientLib js="ionic-aem-apps.controllers"/>
+            <cq:includeClientLib js="ionic-aem-apps.all"/>
             <cq:include script="js_application_clientlibs.jsp"/>
             <script src="<c:out value='${currentPage.name}'/>.angular-app-module.js"></script>
         </c:when>
@@ -29,6 +29,6 @@
     </c:choose>
 
     <!-- TODO: Is this necessary?  It seems to be including some OOB client lib that I don't think we need -->
-    <cq:include script="js_clientlibs.jsp"/>
+    <%-- <cq:include script="js_clientlibs.jsp"/> --%>
 
 </body>
