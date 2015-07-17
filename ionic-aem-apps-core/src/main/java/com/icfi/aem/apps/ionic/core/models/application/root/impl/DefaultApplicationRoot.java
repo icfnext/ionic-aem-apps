@@ -32,11 +32,20 @@ public class DefaultApplicationRoot implements ApplicationRoot {
         }
     };
 
+    private static final Predicate<ComponentNode> COMPONENT_REQUIRES_PLUGINS_PREDICATE = new Predicate<ComponentNode>() {
+        public boolean apply(ComponentNode componentNode) {
+            TypedResource typedResource = componentNode.getResource().adaptTo(TypedResource.class);
+
+            return typedResource != null && !typedResource.getResourceType().getAsListInherited(REQUIRED_CORDOVA_PLUGINS_KEY, String.class).isEmpty();
+
+        }
+    };
+
     private final PageDecorator rootPage;
 
     private List<ApplicationState> applicationStates;
     private Set<String> applicationModules;
-
+    private Set<String> applicationPlugins;
 
     public DefaultApplicationRoot(PageDecorator rootPage) {
         this.rootPage = rootPage;
@@ -98,6 +107,26 @@ public class DefaultApplicationRoot implements ApplicationRoot {
         }
 
         return applicationModules;
+
+    }
+
+    public Set<String> getRequiredPlugins() {
+
+        if (applicationPlugins != null) {
+            return applicationPlugins;
+        }
+
+        applicationPlugins = Sets.newHashSet();
+
+        for (ComponentNode currentChildNode : rootPage.adaptTo(ComponentNode.class).getParent().get().findDescendants(COMPONENT_REQUIRES_PLUGINS_PREDICATE)) {
+            TypedResource typedResource = currentChildNode.getResource().adaptTo(TypedResource.class);
+
+            if (typedResource != null) {
+                applicationPlugins.addAll(typedResource.getResourceType().getAsListInherited(REQUIRED_CORDOVA_PLUGINS_KEY, String.class));
+            }
+        }
+
+        return applicationPlugins;
 
     }
 

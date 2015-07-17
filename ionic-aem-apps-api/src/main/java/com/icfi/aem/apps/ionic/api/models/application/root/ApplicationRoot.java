@@ -26,5 +26,7 @@ public interface ApplicationRoot {
 
     Set<String> getRequiredAngularModules();
 
+    Set<String> getRequiredPlugins();
+
     String getPath();
 }
