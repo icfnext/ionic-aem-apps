@@ -56,11 +56,11 @@ public class LinkTransformer extends AbstractSAXPipe implements Transformer {
 
     //TODO: This is a rather naive implementation at the moment - specifically it does not handle links to pages which are not ApplicationStates well
     private String transformHref(String href) {
-        if (!href.startsWith("/")) {
+        if (!href.startsWith("/") && !href.startsWith("../")) {
             return href;
         }
 
-        String hrefPath = href.split("\\.")[0];
+        String hrefPath = getResourcePathForHref(href);
 
         Resource referencedResource = processingContext.getRequest().getResourceResolver().getResource(hrefPath);
 
@@ -76,6 +76,14 @@ public class LinkTransformer extends AbstractSAXPipe implements Transformer {
 
         return "#" + hrefPath.substring(referencedState.getApplicationRoot().getPath().length());
 
+    }
+
+    private static String getResourcePathForHref(String href) {
+        if (href.startsWith("../")) {
+            return href.substring(href.lastIndexOf("../") + 2, href.lastIndexOf("."));
+        }
+
+        return href.split("\\.")[0];
     }
 
 }
