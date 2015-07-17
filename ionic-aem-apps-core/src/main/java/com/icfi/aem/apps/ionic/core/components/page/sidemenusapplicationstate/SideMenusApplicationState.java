@@ -11,6 +11,8 @@ import java.util.List;
 
 public class SideMenusApplicationState extends AbstractComponent {
 
+    public static final String RESOURCE_TYPE = "ionic-aem-apps/components/page/side-menus-application-state";
+
     public static final String LEFT_MENU_SIDE = "left";
     public static final String RIGHT_MENU_SIDE = "right";
 
