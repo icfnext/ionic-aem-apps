@@ -5,7 +5,7 @@
 
      Example
 
-     module( '${appName}' )
+     angular.module( '${appName}' )
         .config( function( someProvider ) {
             ...
         } )
