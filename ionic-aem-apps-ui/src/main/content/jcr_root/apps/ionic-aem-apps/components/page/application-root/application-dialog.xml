@@ -5,8 +5,8 @@
         <items jcr:primaryType="cq:WidgetCollection">
             <initialState
                     jcr:primaryType="cq:Widget"
-                    fieldLabel="Initial State"
-                    fieldDescription="Indicates the state the application should move to upon initialization"
+                    fieldLabel="Default State"
+                    fieldDescription="Indicates the state the application should move to in cases where a routing is attempted to a invalid state.  This will also be the initial state of the application unless otherwise established"
                     name="./initialState"
                     xtype="pathfield"/>
             <applicationName
