@@ -1,12 +1,43 @@
 angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
     .service( 'ContentSyncService', function ( $q ) {
 
+        this.initializeApplication = function(config){
+
+            var deferred = $q.defer();
+
+            var config = config || {};
+
+            config.additionalFiles = [];
+            additionalFiles.push()
+
+            if (!checkContentInitialize()) {
+                deferred.reject(new Error('Content init not configured.'));
+                return deferred.promise;
+            }
+
+            var contentInitializer = CQ.mobile.contentInit(config);
+
+            contentInitializer.initializeApplication(function callback(error, newLocation) {
+                if (error) {
+                    deferred.reject(error);
+                    return;
+                }
+
+                // Truthy newLocation indicates initialization was successful
+                // undefined `newLocation` indicates the app has already been initialized
+                deferred.resolve(newLocation);
+
+                return deferred.promise;
+            });
+        };
+
         this.isContentPackageUpdateAvailable = function(contentPackageName) {
 
             var deferred = $q.defer();
 
             if (!checkContentUpdate()) {
                 deferred.reject(new Error('Content sync not configured.'));
+                return deferred.promise;
             }
 
             var contentUpdater = CQ.mobile.contentUpdate();
@@ -34,6 +65,7 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
 
             if (!checkContentUpdate()) {
                 deferred.reject(new Error('Content sync not configured.'));
+                return deferred.promise;
             }
 
             var contentUpdater = CQ.mobile.contentUpdate();
@@ -52,5 +84,9 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
 
         var checkContentUpdate = function(){
             return CQ && CQ.mobile && CQ.mobile.contentUpdate;
-        }
+        };
+
+        var checkContentInitialize = function(){
+            return CQ && CQ.mobile && CQ.mobile.contentInit;
+        };
     });
