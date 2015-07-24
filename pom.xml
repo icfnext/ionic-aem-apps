@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.citytechinc.aem.bedrock</groupId>
         <artifactId>bedrock</artifactId>
-        <version>3.1.1</version>
+        <version>3.1.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -71,7 +71,7 @@
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
-        <bedrock.version>3.1.1</bedrock.version>
+        <bedrock.version>3.1.2</bedrock.version>
         <component.plugin.version>3.1.0</component.plugin.version>
         <ionicaemapps.api.version>1.0.0-SNAPSHOT</ionicaemapps.api.version>
 
