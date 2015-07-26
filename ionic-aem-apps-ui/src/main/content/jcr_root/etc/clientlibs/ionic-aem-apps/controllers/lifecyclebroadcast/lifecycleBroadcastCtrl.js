@@ -1,9 +1,11 @@
 angular.module( 'icfi.aem.apps.ionic.lifecyclebroadcast.controller',
     [ 'ionic' ] )
-    .controller( 'LifecycleBroadcastCtrl', function ( $scope ) {
+    .controller( 'LifecycleBroadcastCtrl', function ( $scope, $log ) {
 
         var rebroadcast = function( e ) {
-            $scope.$broadcast( '$aem.' + e.name, e );
+            if ( e.targetScope === $scope.$parent ) {
+                $scope.$broadcast('$aem.' + e.name, e);
+            }
         };
 
         [
