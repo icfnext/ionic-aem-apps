@@ -5,10 +5,9 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
 
             var deferred = $q.defer();
 
-            var config = config || {};
+            config = config || {};
 
             config.additionalFiles = [];
-            additionalFiles.push()
 
             if (!checkContentInitialize()) {
                 deferred.reject(new Error('Content init not configured.'));
