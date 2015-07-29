@@ -7,7 +7,7 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
 
             config = config || {};
 
-            config.additionalFiles = [];
+            config.additionalFiles = config.additionalFiles || [];
 
             if (!checkContentInitialize()) {
                 deferred.reject(new Error('Content init not configured.'));
@@ -16,7 +16,8 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
 
             var contentInitializer = CQ.mobile.contentInit(config);
 
-            contentInitializer.initializeApplication(function callback(error, newLocation) {
+            contentInitializer.initializeApplication(function(error,newLocation) {
+
                 if (error) {
                     deferred.reject(error);
                     return;
@@ -25,9 +26,9 @@ angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
                 // Truthy newLocation indicates initialization was successful
                 // undefined `newLocation` indicates the app has already been initialized
                 deferred.resolve(newLocation);
-
-                return deferred.promise;
             });
+
+            return deferred.promise;
         };
 
         this.isContentPackageUpdateAvailable = function(contentPackageName) {
