@@ -19,7 +19,9 @@ import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
+import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -34,6 +36,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Set;
 
 @Component(metatype=true, factory="com.day.cq.contentsync.handler.ContentUpdateHandler/cordovaplugins", inherit=true)
@@ -41,7 +44,6 @@ import java.util.Set;
 public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CordovaPluginUpdateHandler.class);
-    private static final String CONTENT_CONFIG_NAME = "pat-config.xml";
 
     public boolean updateCacheEntry(ConfigEntry configEntry, Long lastUpdated, String configCacheRoot, Session adminSession, Session userSession)
     {
@@ -53,40 +55,18 @@ public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHand
             ResourceResolver resourceResolver = this.resolverFactory.getResourceResolver(adminSession);
             Resource resource = resourceResolver.getResource(getResolvedContentPath(configEntry));
 
-            Resource configResource = resourceResolver.getResource(resource.getPath() + "/www/config.xml");
-
             PageDecorator decorator = resourceResolver.adaptTo(PageManagerDecorator.class).getPage("/content/phonegap/circuit-2015-app/en/home");
 
-            /*
-            MobileResourceLocator mobileResMgr = (MobileResourceLocator)resourceResolver.adaptTo(MobileResourceLocator.class);
-            MobileResource instanceResource = mobileResMgr.findClosestResourceByType(resource, MobileResourceType.INSTANCE.getType(), new String[0]);
-            if (instanceResource != null) {
-                MobileAppProvider appProvider = (MobileAppProvider) instanceResource.adaptTo(MobileAppProvider.class);
-                if ((appProvider instanceof AppInstanceProviderImpl)) {
-                    String widgetConfigPath = (String) appProvider.getProperties().get("widgetConfigPath", String.class);
-                    Resource appContent = ((AppInstanceProviderImpl) appProvider).getContentResource();
-                    WidgetConfigDocument configDocument = WidgetConfigDocument.loadConfigDocument(widgetConfigPath, appContent);
-                }
-            }*/
+            JSONObject contentPackagesJSON = new JSONObject();
+            JSONArray contentPackagesJSONArray = new JSONArray();
+            contentPackagesJSON.put("plugins", contentPackagesJSONArray);
 
             ApplicationRoot root = decorator.adaptTo(ApplicationRoot.class);
-
             Set<String> plugins = root.getRequiredPlugins();
 
-            /* XML Parsing code */
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
+            addPluginsResource(contentPackagesJSONArray,plugins);
 
-            String configXML = "<?xml version='1.0' encoding='utf-8'?>"+
-            "<widget id=\"com.citytechinc.things.beermunity\" version=\"1.0.0\" xmlns=\"http://www.w3.org/ns/widgets\" xmlns:gap=\"http://phonegap.com/ns/1.0\">" +
-            "<name>Circuit 2015 App</name>" +
-            "</widget>";
-
-            InputStream stream = IOUtils.toInputStream(configXML,"UTF-8");
-            Document doc = db.parse(stream);
-
-
-            addListingFile("This is pat's file.", cacheFolder.getPath() + "/" + CONTENT_CONFIG_NAME, adminSession);
+            addListingFile(contentPackagesJSON, cacheFolder.getPath() + "/" + "pge-plugins.json", adminSession);
 
             LOGGER.debug("resource: " + resource.getPath());
         }
@@ -96,14 +76,29 @@ public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHand
         return false;
     }
 
-    private void addListingFile(String fileData, String cachePath, Session adminSession) throws RepositoryException, JSONException {
+    private void addListingFile(JSONObject fileListing, String cachePath, Session adminSession)
+            throws RepositoryException, JSONException
+    {
         JcrUtil.createPath(cachePath, "sling:Folder", "nt:file", adminSession, false);
         Node cacheContentNode = JcrUtil.createPath(cachePath + "/jcr:content", "nt:resource", adminSession);
         Calendar calTS = Calendar.getInstance();
-        cacheContentNode.setProperty("jcr:data", adminSession.getValueFactory().createBinary(new ByteArrayInputStream(fileData.getBytes())));
+        cacheContentNode.setProperty("jcr:data", adminSession.getValueFactory().createBinary(new ByteArrayInputStream(fileListing.toString(3).getBytes())));
 
         cacheContentNode.setProperty("jcr:lastModified", calTS);
         adminSession.save();
+    }
+
+    private void addPluginsResource(JSONArray pluginContentJSON, Iterable<String> plugins)
+            throws JSONException
+    {
+        Iterator<String> pluginContentIterator = plugins.iterator();
+        while (pluginContentIterator.hasNext())
+        {
+            String plugin = pluginContentIterator.next();
+            JSONObject updatePluginJSON = new JSONObject();
+            updatePluginJSON.put("plugin", plugin);
+            pluginContentJSON.put(updatePluginJSON);
+        }
     }
 
 }
