@@ -1,40 +1,23 @@
 package com.icfi.aem.apps.ionic.core.contentsync.handler;
 
-import com.adobe.cq.mobile.platform.MobileResource;
-import com.adobe.cq.mobile.platform.MobileResourceLocator;
-import com.adobe.cq.mobile.platform.MobileResourceType;
-import com.adobe.cq.mobile.platform.impl.AppInstanceProviderImpl;
-import com.adobe.cq.mobile.platform.impl.MobileAppProvider;
-import com.adobe.cq.mobile.platform.impl.WidgetConfigDocument;
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
 import com.citytechinc.aem.bedrock.api.page.PageManagerDecorator;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.day.cq.contentsync.handler.AbstractSlingResourceUpdateHandler;
 import com.day.cq.contentsync.config.ConfigEntry;
-import com.day.cq.wcm.api.Page;
 import com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot;
-import com.icfi.aem.apps.ionic.core.models.application.root.impl.DefaultApplicationRoot;
-import org.apache.commons.io.IOUtils;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Set;
@@ -44,6 +27,11 @@ import java.util.Set;
 public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CordovaPluginUpdateHandler.class);
+    private static final String APPLICATION_ROOT_PATH_KEY = "applicationRootPath";
+    private static final String PLUGINS_ROOT_KEY = "plugins";
+    private static final String PLUGIN_ITEM_KEY = "plugin";
+    private static final String PLUGINS_FILE_NAME = "pge-plugins.json";
+
 
     public boolean updateCacheEntry(ConfigEntry configEntry, Long lastUpdated, String configCacheRoot, Session adminSession, Session userSession)
     {
@@ -53,22 +41,26 @@ public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHand
         {
             Node cacheFolder = adminSession.getNode(configCacheRoot);
             ResourceResolver resourceResolver = this.resolverFactory.getResourceResolver(adminSession);
-            Resource resource = resourceResolver.getResource(getResolvedContentPath(configEntry));
 
-            PageDecorator decorator = resourceResolver.adaptTo(PageManagerDecorator.class).getPage("/content/phonegap/circuit-2015-app/en/home");
+            String applicationRootPath = configEntry.getValue(APPLICATION_ROOT_PATH_KEY);
+
+            if(applicationRootPath == null){
+                LOGGER.error("applicationRootPath not configured for: " + configEntry.getPath());
+                return false;
+            }
+
+            PageDecorator decorator = resourceResolver.adaptTo(PageManagerDecorator.class).getPage(applicationRootPath);
 
             JSONObject contentPackagesJSON = new JSONObject();
             JSONArray contentPackagesJSONArray = new JSONArray();
-            contentPackagesJSON.put("plugins", contentPackagesJSONArray);
+            contentPackagesJSON.put(PLUGINS_ROOT_KEY, contentPackagesJSONArray);
 
             ApplicationRoot root = decorator.adaptTo(ApplicationRoot.class);
             Set<String> plugins = root.getRequiredPlugins();
 
-            addPluginsResource(contentPackagesJSONArray,plugins);
+            addPluginsResource(contentPackagesJSONArray, plugins);
 
-            addListingFile(contentPackagesJSON, cacheFolder.getPath() + "/" + "pge-plugins.json", adminSession);
-
-            LOGGER.debug("resource: " + resource.getPath());
+            addListingFile(contentPackagesJSON, cacheFolder.getPath() + "/" + PLUGINS_FILE_NAME, adminSession);
         }
         catch (Exception ex) {
             LOGGER.error("Unexpected error while updating cache for config xml: " + configEntry.getPath(), ex);
@@ -96,7 +88,7 @@ public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHand
         {
             String plugin = pluginContentIterator.next();
             JSONObject updatePluginJSON = new JSONObject();
-            updatePluginJSON.put("plugin", plugin);
+            updatePluginJSON.put(PLUGIN_ITEM_KEY, plugin);
             pluginContentJSON.put(updatePluginJSON);
         }
     }
