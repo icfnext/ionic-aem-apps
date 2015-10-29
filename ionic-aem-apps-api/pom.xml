@@ -161,8 +161,8 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <groupId>com.adobe.granite.osgi.wrapper</groupId>
+            <artifactId>com.adobe.granite.osgi.wrapper.guava</artifactId>
         </dependency>
 
         <!-- Bedrock library -->
@@ -179,6 +179,7 @@
         <dependency>
             <groupId>com.citytechinc.cq.cq-component-plugin</groupId>
             <artifactId>cq-component-annotations</artifactId>
+            <version>${component.plugin.version}</version>
         </dependency>
     </dependencies>
 </project>

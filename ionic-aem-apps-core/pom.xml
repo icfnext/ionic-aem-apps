@@ -176,8 +176,8 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <groupId>com.adobe.granite.osgi.wrapper</groupId>
+            <artifactId>com.adobe.granite.osgi.wrapper.guava</artifactId>
         </dependency>
 
         <!-- API -->
@@ -192,16 +192,20 @@
             <groupId>com.adobe.cq.mobile</groupId>
             <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
         </dependency>
-
+        <!--
         <dependency>
             <groupId>com.day.cq</groupId>
             <artifactId>cq-content-sync</artifactId>
         </dependency>
-
+        -->
         <!-- Bedrock library -->
         <dependency>
             <groupId>com.citytechinc.aem.bedrock</groupId>
             <artifactId>bedrock-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.citytechinc.aem.bedrock</groupId>
+            <artifactId>bedrock-models</artifactId>
         </dependency>
         <dependency>
             <groupId>com.citytechinc.aem.bedrock</groupId>
@@ -212,16 +216,14 @@
         <dependency>
             <groupId>com.citytechinc.cq.cq-component-plugin</groupId>
             <artifactId>cq-component-annotations</artifactId>
+            <version>${component.plugin.version}</version>
         </dependency>
+        <!--TODO: What is this?
         <dependency>
             <groupId>com.adobe.aem</groupId>
             <artifactId>aem-api</artifactId>
             <version>6.0.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.adobe.aem</groupId>
-            <artifactId>aem-api</artifactId>
-            <version>6.0.0.1</version>
-        </dependency>
+        -->
     </dependencies>
 </project>
