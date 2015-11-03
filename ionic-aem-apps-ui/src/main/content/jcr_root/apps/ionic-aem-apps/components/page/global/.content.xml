@@ -6,4 +6,4 @@
           jcr:primaryType="cq:Component"
           angularController="LifecycleBroadcastCtrl"
           requiredAngularModules="[icfi.aem.apps.ionic.lifecyclebroadcast.controller]"
-          sling:resourceSuperType="mobileapps/components/angular/ng-page" />
+          sling:resourceSuperType="wcm/foundation/components/page" />

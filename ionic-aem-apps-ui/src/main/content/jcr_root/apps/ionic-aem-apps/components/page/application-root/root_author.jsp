@@ -1,5 +1,5 @@
 <%@page session="false" %>
 <%@include file="/apps/ionic-aem-apps/components/global.jsp" %>
-<bedrock:component className="com.icfi.aem.apps.ionic.core.components.page.applicationroot.ApplicationRootComponent" name="applicationRootComponent" />
+<bedrock:component className="com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot" name="applicationRoot" />
 
-<h2>${applicationRootComponent.applicationRoot.applicationName} Root</h2>
+<h2>${applicationRoot.applicationRoot.applicationName} Root</h2>
