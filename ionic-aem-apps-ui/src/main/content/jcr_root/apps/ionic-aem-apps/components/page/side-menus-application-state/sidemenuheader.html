@@ -1,0 +1,13 @@
+<ion-nav-bar data-sly-use.sideMenusApplicationStateComponent="com.icfi.aem.apps.ionic.core.components.page.sidemenusapplicationstate.SideMenusApplicationState" class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-nav-buttons data-sly-test="${sideMenusApplicationStateComponent.usesLeftSideMenu}" side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons data-sly-test="${sideMenusApplicationStateComponent.usesRightSideMenu}" side="right">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
+        </button>
+    </ion-nav-buttons>
+</ion-nav-bar>

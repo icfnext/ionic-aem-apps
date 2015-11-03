@@ -1,0 +1,6 @@
+<sly data-sly-use.applicationRoot="com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot"/>
+    <script data-sly-repeat.applicationState="${applicationRoot.applicationStates}" type="text/ng-template" id="${applicationState.template}">
+        <!-- TODO: See if decoration is being suppressed around this content.  There is an odd comment in https://docs.adobe.com/docs/en/aem/6-1/develop/sightly/block-statements.html which seems to indicate it might be -->
+        <sly data-sly-resource="${applicationState.contentResource.path @ addSelectors='template'" />
+    </script>
+</c:forEach>

@@ -1,0 +1,41 @@
+<sly data-sly-include="set-content-type.jsp" data-sly-unwrap></sly>
+<sly data-sly-use.applicationRoot="com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot">
+
+    ( function ( angular ) {
+    'use strict';
+
+    angular.module(
+    '${applicationRoot.applicationName}',
+    [<sly data-sly-repeat.currentRequiredModule="${applicationRoot.requiredAngularModules}">
+        '${currentRequiredModule}' <sly data-sly-test="${last}">,</sly>
+    </sly>])
+    .config( function ($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+    <sly data-sly-repeat.applicationState="${applicationRoot.applicationStates}">
+        <sly data-sly-testtest="${!applicationState.structuralState}">
+            .state( '${applicationState.id}', {
+                abstract: ${applicationState.abstract},
+                url: '${applicationState.url}',
+                <sly data-sly-test="${wcmmode.previewMode}">
+                    templateUrl: '${applicationState.path}.template.html'
+                </sly>
+                <sly data-sly-test="${!wcmmode.previewMode}">
+                    templateUrl: '${applicationState.template}'
+                </sly>
+                <sly data-sly-test="${applicationState.hasAngularController}">
+                    ,controller: '${applicationState.angularController}'
+                </sly>
+            } )
+        </sly>
+    </sly>
+    ;
+
+    $urlRouterProvider.otherwise( '${applicationRoot.initialStateUrl}' );
+
+    } );
+
+    <sly data-sly-include="angular-app-module-suffix.html"/>
+    } )( angular );
+
+</sly>

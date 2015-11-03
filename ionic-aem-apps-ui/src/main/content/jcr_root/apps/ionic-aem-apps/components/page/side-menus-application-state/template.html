@@ -1,0 +1,27 @@
+<sly data-sly-use.sideMenusApplicationStateComponent="com.icfi.aem.apps.ionic.core.components.page.sidemenusapplicationstate.SideMenusApplicationState">
+    <sly data-sly-test="${!isIonicAemAppMode}">
+        <!--/* TODO: Better Authoring Experience */-->
+        Side Menu Content
+        <sly data-sly-include="sidemenucontent.html"/>
+        <div class="authorable-left-side-menu" data-sly-test="${sideMenusApplicationStateComponent.usesLeftSideMenu}">
+            Left Side Menu
+            <sly data-sly-include="leftsidemenu.html"/>
+        </div>
+        <div class="authorable-right-side-menu" data-sly-test="${sideMenusApplicationStateComponent.usesRightSideMenu}">
+            Right Side Menu
+            <sly data-sly-include="rightsidemenu.html"/>
+        </div>
+    </sly>
+    <ion-side-menus data-sly-test="${isIonicAemAppMode}">
+        <ion-side-menu-content>
+            <sly data-sly-include="sidemenuheader.html"/>
+            <sly data-sly-include="sidemenucontent.html"/>
+        </ion-side-menu-content>
+        <ion-side-menu data-sly-test="${sideMenusApplicationStateComponent.usesLeftSideMenu}" side="left">
+            <sly data-sly-include="leftsidemenu.html"/>
+        </ion-side-menu>
+        <ion-side-menu data-sly-test="${sideMenusApplicationStateComponent.usesRightSideMenu}" side="right">
+            <sly data-sly-include="rightsidemenu.html"/>
+        </ion-side-menu>
+    </ion-side-menus>
+</sly>
