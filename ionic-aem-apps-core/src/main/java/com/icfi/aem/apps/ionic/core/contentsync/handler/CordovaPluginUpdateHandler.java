@@ -24,7 +24,7 @@ import java.util.Set;
 
 @Component(metatype=true, factory="com.day.cq.contentsync.handler.ContentUpdateHandler/cordovaplugins", inherit=true)
 @Service
-public class CordovaPluginUpdateHandler  extends AbstractSlingResourceUpdateHandler {
+public class CordovaPluginUpdateHandler extends AbstractSlingResourceUpdateHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CordovaPluginUpdateHandler.class);
     private static final String APPLICATION_ROOT_PATH_KEY = "applicationRootPath";
