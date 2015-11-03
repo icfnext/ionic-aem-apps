@@ -55,6 +55,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <scanClasses>true</scanClasses>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -192,12 +195,11 @@
             <groupId>com.adobe.cq.mobile</groupId>
             <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
         </dependency>
-        <!--
         <dependency>
             <groupId>com.day.cq</groupId>
             <artifactId>cq-content-sync</artifactId>
         </dependency>
-        -->
+
         <!-- Bedrock library -->
         <dependency>
             <groupId>com.citytechinc.aem.bedrock</groupId>
