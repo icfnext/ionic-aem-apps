@@ -132,6 +132,10 @@
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.jcr.resource</artifactId>
         </dependency>
         <dependency>

@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Set;
 
-@Component(metatype=true, factory="com.day.cq.contentsync.handler.ContentUpdateHandler/cordovaplugins", inherit=true)
+@Component(factory="com.day.cq.contentsync.handler.ContentUpdateHandler/cordovaplugins", inherit=true)
 @Service
 public class CordovaPluginUpdateHandler extends AbstractSlingResourceUpdateHandler {
 
