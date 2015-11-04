@@ -1,6 +1,7 @@
 package com.icfi.aem.apps.ionic.core.adapters;
 
 import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.citytechinc.aem.bedrock.api.page.PageManagerDecorator;
 import com.icfi.aem.apps.ionic.core.models.application.root.impl.DefaultApplicationRoot;
 import com.icfi.aem.apps.ionic.core.predicates.application.root.ApplicationRootPagePredicate;
 import org.apache.felix.scr.annotations.*;
@@ -27,7 +28,9 @@ public class ApplicationRootAdapterFactory implements AdapterFactory {
 
     public <AdapterType> AdapterType getAdapter(Object adaptable, Class<AdapterType> type) {
         if (adaptable instanceof Resource) {
-            return getPageDecoratorAdapter(((Resource) adaptable).adaptTo(PageDecorator.class), type);
+            Resource resource = (Resource) adaptable;
+
+            return getPageDecoratorAdapter(resource.getResourceResolver().adaptTo(PageManagerDecorator.class).getContainingPage(resource), type);
         }
         if (adaptable instanceof PageDecorator) {
             return getPageDecoratorAdapter((PageDecorator) adaptable, type);
