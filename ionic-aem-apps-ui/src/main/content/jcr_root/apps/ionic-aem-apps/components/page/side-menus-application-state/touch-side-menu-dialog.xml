@@ -1,0 +1,21 @@
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Side Menu Configuration"
+          sling:resourceType="granite/ui/components/foundation/section">
+    <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+            margin="{Boolean}false"/>
+    <items jcr:primaryType="nt:unstructured">
+        <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <menuSides cq:showOnCreate="{Boolean}true" disabled="{Boolean}false" jcr:primaryType="nt:unstructured" multiple="{Boolean}true" name="./menuSides" renderReadOnly="{Boolean}true" required="{Boolean}false" sling:resourceType="granite/ui/components/foundation/form/select">
+                    <items jcr:primaryType="nt:unstructured">
+                        <option0 jcr:primaryType="nt:unstructured" selected="{Boolean}false" text="Left" value="left"/>
+                        <option1 jcr:primaryType="nt:unstructured" selected="{Boolean}false" text="Right" value="right"/>
+                    </items>
+                </menuSides>
+            </items>
+        </column>
+    </items>
+</jcr:root>
