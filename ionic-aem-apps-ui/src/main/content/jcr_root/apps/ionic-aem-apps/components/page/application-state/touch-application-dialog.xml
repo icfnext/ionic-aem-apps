@@ -1,0 +1,42 @@
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Application State"
+          sling:resourceType="granite/ui/components/foundation/section">
+    <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+            margin="{Boolean}false"/>
+    <items jcr:primaryType="nt:unstructured">
+        <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <isAbstract
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/switch"
+                        fieldLabel="Abstract State"
+                        fieldDescription="Indicates that the state represented by this state content node is an abstract state."
+                        name="./isAbstractState"
+                        onText="Yes"
+                        offText="No"
+                        rootPath="/content" />
+                <isSlug
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/switch"
+                        fieldLabel="Slug State"
+                        fieldDescription="Indicates that the path segment represented by this state should be rendered as a slug whose data will later be accessible via the $stateParams service."
+                        name="./isSlugState"
+                        onText="Yes"
+                        offText="No"
+                        rootPath="/content" />
+                <isStructuralState
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/switch"
+                        fieldLabel="Structural State"
+                        fieldDescription="Indicates that this state content node exists solely to provide structure to the state URL and should not be produced as part of the state rendering."
+                        name="./isStructuralState"
+                        onText="Yes"
+                        offText="No"
+                        rootPath="/content" />
+            </items>
+        </column>
+    </items>
+</jcr:root>

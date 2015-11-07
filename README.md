@@ -5,13 +5,15 @@ A library supporting the construction of Hybrid mobile applications using AEM Ap
 ## Overview
 
 AEM Apps is a module of AEM which can be used to create authorable experiences which present as native mobile applications. 
-These applications leverage the Cordova or PhoneGap framework and as such are coloquially refered to as Hybrid applications. 
+These applications leverage the Cordova or PhoneGap framework and as such are colloquially referred to as Hybrid applications. 
 
 ## Content Structure
 
-## Application Root 
+## Page Types
 
-### Application Level Configuration and Run Functionality
+### Application Root 
+
+#### Application Level Configuration and Run Functionality
 
 A jsp hook, `angular-app-module-suffix.jsp` is provided off of the Application Root resource type.  This is an ideal 
 place to code application level configurations and run mechanisms (ie, code which would normally be placed in the 
@@ -30,7 +32,13 @@ angular.module( 'applicationName' )
 
 This code will be included immediately after the generated application level state configuration.
 
-## Application State
+### Application State
+
+#### Abstract States
+
+#### Slug States
+
+#### Structural States
 
 ### Side Menus Application State
 
@@ -53,4 +61,7 @@ This code will be included immediately after the generated application level sta
 ### Splash Screen
 
 ## Adapters
+
+## Bindings
+
 
