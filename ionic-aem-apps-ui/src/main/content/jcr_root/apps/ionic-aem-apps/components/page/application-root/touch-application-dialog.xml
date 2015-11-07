@@ -1,0 +1,28 @@
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Application"
+          sling:resourceType="granite/ui/components/foundation/section">
+    <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+            margin="{Boolean}false"/>
+    <items jcr:primaryType="nt:unstructured">
+        <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <initialState
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                        fieldLabel="Default State"
+                        fieldDescription="Indicates the state the application should move to in cases where a routing is attempted to a invalid state.  This will also be the initial state of the application unless otherwise established"
+                        name="./initialState"
+                        rootPath="/content" />
+                <applicationName
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                        fieldLabel="Application Name"
+                        fieldDescription="The name of the Angular Application Module for this application.  Defaults to IonicApplication"
+                        name="./ionicApplicationName" />
+            </items>
+        </column>
+    </items>
+</jcr:root>

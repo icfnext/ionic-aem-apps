@@ -7,13 +7,13 @@
     angular.module(
     '${applicationRoot.applicationName}',
     [<sly data-sly-repeat.currentRequiredModule="${applicationRoot.requiredAngularModules}">
-        '${currentRequiredModule}' <sly data-sly-test="${last}">,</sly>
+        '${currentRequiredModule}' <sly data-sly-test="${!currentRequiredModule.last}">,</sly>
     </sly>])
     .config( function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
     <sly data-sly-repeat.applicationState="${applicationRoot.applicationStates}">
-        <sly data-sly-testtest="${!applicationState.structuralState}">
+        <sly data-sly-test="${!applicationState.structuralState}">
             .state( '${applicationState.id}', {
                 abstract: ${applicationState.abstract},
                 url: '${applicationState.url}',
