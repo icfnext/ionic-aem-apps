@@ -152,4 +152,12 @@ native application this requirement is to be called out by setting the `required
 
 ## Bindings
 
+The following are bindings provided by the Ionic AEM Apps library.
+
+| Binding Name | Description |
+| ------------ | ----------- |
+| isIonicAemAppMode | Indication of whether the user is currently in "app mode".  Rendering of numerious components is different in app mode as many of the authoring affordances are removed.  Currently "app mode" is defined as `publish mode || preview mode`. |
+
+
+
 
