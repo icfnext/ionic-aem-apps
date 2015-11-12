@@ -120,13 +120,27 @@ open paragraph system.
 
 ### Ion-Nav-View
 
+Represents an instance of the `ion-nav-view` directive.  This component may be used to place an injection point at 
+an arbitrary place in an Application State to allow for the injection of a child state at an appropriate place.  
 
+Note: The current implementation does not allow for multiple named nav views.   
 
 ## Custom Component Development
 
+When developing custom components there are some properties unique to the Ionic AEM Apps library allowing for control 
+over concerns which are unique to Cordova and Angular application development.  
+
 ### Required Angular Modules
 
+When a custom component requires the inclusion of Angular modules at the application level these requirements are to be 
+called out by setting the `requiredAngularModules` property of the `.content.xml` associated with the component.  This 
+is to be set to a multivalue String indicating the modules required.
+
 ### Required Cordova Plugins
+
+When a custom component requires the inclusion of a particular Cordova/Phone-Gap plugin as part of the build of the 
+native application this requirement is to be called out by setting the `requiredCordovaPlugins` property of the 
+`.content.xml` associated with the component.  This is to be set to a multivalue String indicating the modules required.
 
 ## Content Sync 
 
