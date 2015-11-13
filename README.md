@@ -26,6 +26,9 @@ context of this document the word "State" refers to application states as define
 
 ## Page Types
 
+The various page types defined by the application map to Cordova application idioms as defined by the Ionic Framework 
+or by Cordova itself.  
+
 ### Application Root 
 
 The Application Root, implemented by the `sling:resourceType` `ionic-aem-apps/components/page/application-root`, 
@@ -150,13 +153,21 @@ native application this requirement is to be called out by setting the `required
 
 ## Adapters
 
+The following Sling Adapters are provided by the Ionic AEM Apps library.
+
+| Adapt From | Adapt To | Description |
+| ---------- | -------- | ----------- |
+| `org.apache.sling.api.resource.Resource`, `com.citytechinc.aem.bedrock.api.page.PageDecorator` | `com.icfi.aem.apps.ionic.api.models.application.root.ApplicationRoot` | The Application Root API provides a number of methods for acquiring information about an application such as a list of the Application States making up the application.  Only pages of type `ionic-aem-apps/components/page/application-root` may be adapted to an Application Root |
+| `org.apache.sling.api.resource.Resource`, `com.citytechinc.aem.bedrock.api.page.PageDecorator` | `com.icfi.aem.apps.ionic.api.models.application.state.ApplicationState` | The Application State API provides a number of methods for acquiring information about a single state in an application.  The methods in this API are invoked in the construction of the state inputs to the `$stateProvider` upon bootstrapping of the application |
+| `org.apache.sling.api.resource.Resource` | `com.icfi.aem.apps.ionic.api.resource.TypedResource` | The Typed Resource API provides access to the properties of the type of a particular resource.  For example, if a particular resource is of `sling:resourceType` `foo/components/content/type` the resource may be adapted to a Typed Resource in order to acquire properties off of `/apps/foo/components/content/type`. |
+
 ## Bindings
 
 The following are bindings provided by the Ionic AEM Apps library.
 
 | Binding Name | Description |
 | ------------ | ----------- |
-| isIonicAemAppMode | Indication of whether the user is currently in "app mode".  Rendering of numerious components is different in app mode as many of the authoring affordances are removed.  Currently "app mode" is defined as `publish mode || preview mode`. |
+| isIonicAemAppMode | Indication of whether the user is currently in "app mode".  Rendering of numerous components is different in app mode as many of the authoring affordances are removed.  Currently "app mode" is defined as `publish mode || preview mode`. |
 
 
 
