@@ -12,6 +12,7 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
     private final PageDecorator rootPage;
 
     private final ApplicationRoot applicationRoot;
+    private final String applicationRootPath;
 
     public DefaultContentSyncRoot(PageDecorator rootPage) {
 
@@ -19,12 +20,17 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
 
         List<PageDecorator> applicationRootList = this.rootPage.getChildren(new ApplicationRootPagePredicate());
 
-            this.applicationRoot = (applicationRootList.size() == 1) ?
-                    applicationRootList.get(0).adaptTo(ApplicationRoot.class) : null;
+        this.applicationRoot = (applicationRootList.size() == 1) ?
+                applicationRootList.get(0).adaptTo(ApplicationRoot.class) : null;
+
+        this.applicationRootPath = rootPage.get("applicationRootPath", String.class).get();
     }
 
     public ApplicationRoot getApplicationRoot() {
         return applicationRoot;
     }
 
+    public String getApplicationRootPath() {
+        return applicationRootPath;
+    }
 }

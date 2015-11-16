@@ -1,6 +1,12 @@
 <body data-sly-use.contentSyncRoot="com.icfi.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot">
 
     <script data-sly-test="${wcmmode.publish}" type="text/javascript" src="/cordova.js"></script>
+    <script>
+       // window.location.href = '${contentSyncRoot.applicationRootPath}';
+    </script>
+    <p>
+        Redirect Path: '${contentSyncRoot.applicationRootPath}'
+    </p>
 
     <sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"
          data-sly-call="${clientLib.js @ categories='ionic-aem-apps.content-sync.all'}" />

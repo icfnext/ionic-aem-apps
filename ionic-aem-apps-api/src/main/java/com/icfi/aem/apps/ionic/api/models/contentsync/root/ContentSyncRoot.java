@@ -8,5 +8,6 @@ public interface ContentSyncRoot {
 
     ApplicationRoot getApplicationRoot();
 
+    String getApplicationRootPath();
 
 }
