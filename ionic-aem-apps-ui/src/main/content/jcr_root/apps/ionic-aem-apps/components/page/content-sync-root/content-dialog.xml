@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Panel"
+          title="Content Sync">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <applicationRootPath
+                jcr:primaryType="cq:Widget"
+                fieldLabel="Application Root Path"
+                fieldDescription="The path to the application root that is redirected to after content sync completes."
+                name="./applicationRootPath"
+                xtype="pathfield"/>
+        <autoCloseSplashScreen
+                jcr:primaryType="cq:Widget"
+                fieldLabel="Close Splash Screen"
+                fieldDescription="Indicates that the splash screen should be closed automatically and not left to the application root to close it."
+                inputValue="true"
+                name="./autoCloseSplashScreen"
+                type="checkbox"
+                xtype="selection"/>
+    </items>
+</jcr:root>
