@@ -34,6 +34,7 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
                 false : true;
 
         this.applicationName = (this.applicationRoot != null) ? this.applicationRoot.getApplicationName() : null;
+
     }
 
     public String getApplicationRootPath() {

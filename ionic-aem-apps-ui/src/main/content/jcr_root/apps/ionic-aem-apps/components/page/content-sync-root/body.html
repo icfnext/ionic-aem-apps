@@ -1,8 +1,32 @@
 <body data-sly-use.contentSyncRoot="com.icfi.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot">
 
-    <script data-sly-test="${wcmmode.publish}" type="text/javascript" src="/cordova.js"></script>
+    <script type="text/javascript" src="/cordova.js"></script>
     <script>
-       // window.location.href = '${contentSyncRoot.applicationRootPath}';
+        // Redirect to the following path once init has finished
+        var successRedirectPath = '${contentSyncRoot.applicationRootPath}';
+
+        var initializationComplete = function(error, localContentPath) {
+            if (error) {
+                alert("ContentSync init error: " + error);
+                return console.error("ContentSync init error: " + error);
+            }
+
+            // App was successfully initialized. Redirect to the new local content path.
+            alert("ContentSync success. Returned path: [" + localContentPath + "]");
+            console.log("ContentSync success. Returned path: [" + localContentPath + "]");
+            return window.location.href = localContentPath + successRedirectPath;
+        };
+
+        var initializeApplication = function() {
+            alert('deviceReady fired.  initialization about to start.');
+            var contentInitializer = CQ.mobile.contentInit({
+                id: '${contentSyncRoot.applicationName}'
+            });
+            contentInitializer.initializeApplication(initializationComplete);
+        };
+
+        // Begin initialization once Cordova bridge is ready
+        document.addEventListener('deviceready', initializeApplication, false)
     </script>
     <p>
         Redirect Path: '${contentSyncRoot.applicationRootPath}'

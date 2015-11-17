@@ -9,13 +9,6 @@
     <items jcr:primaryType="nt:unstructured">
         <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/foundation/container">
             <items jcr:primaryType="nt:unstructured">
-                <applicationRootPath
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                        fieldLabel="Application Root Path"
-                        fieldDescription="The path to the application root that is redirected to after content sync completes."
-                        name="./applicationRootPath"
-                        rootPath="/content" />
                 <autoCloseSplashScreen
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/foundation/form/switch"
