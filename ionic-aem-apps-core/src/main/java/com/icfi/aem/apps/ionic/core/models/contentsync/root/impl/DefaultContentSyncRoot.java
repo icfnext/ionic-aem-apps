@@ -13,24 +13,38 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
 
     private final ApplicationRoot applicationRoot;
     private final String applicationRootPath;
+    private final String applicationName;
+    private final boolean applicationRootConfigured;
 
     public DefaultContentSyncRoot(PageDecorator rootPage) {
 
         this.rootPage = rootPage;
 
-        List<PageDecorator> applicationRootList = this.rootPage.getChildren(new ApplicationRootPagePredicate());
+        PageDecorator parentPage = this.rootPage.getParent();
+
+        List<PageDecorator> applicationRootList = parentPage.getChildren(new ApplicationRootPagePredicate());
 
         this.applicationRoot = (applicationRootList.size() == 1) ?
                 applicationRootList.get(0).adaptTo(ApplicationRoot.class) : null;
 
-        this.applicationRootPath = rootPage.get("applicationRootPath", String.class).get();
-    }
+        this.applicationRootPath = (this.applicationRoot == null) ?
+                "" : this.applicationRoot.getPath() + ".html";
 
-    public ApplicationRoot getApplicationRoot() {
-        return applicationRoot;
+        this.applicationRootConfigured = (this.applicationRoot == null) || applicationRootPath.isEmpty()  ?
+                false : true;
+
+        this.applicationName = (this.applicationRoot != null) ? this.applicationRoot.getApplicationName() : null;
     }
 
     public String getApplicationRootPath() {
         return applicationRootPath;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public boolean isApplicationRootConfigured() {
+        return applicationRootConfigured;
     }
 }

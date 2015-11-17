@@ -6,8 +6,9 @@ public interface ContentSyncRoot {
 
     String RESOURCE_TYPE = "ionic-aem-apps/components/page/content-sync-root";
 
-    ApplicationRoot getApplicationRoot();
-
     String getApplicationRootPath();
 
+    String getApplicationName();
+
+    boolean isApplicationRootConfigured();
 }

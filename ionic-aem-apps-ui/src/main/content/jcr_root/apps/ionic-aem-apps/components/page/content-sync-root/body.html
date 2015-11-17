@@ -7,6 +7,12 @@
     <p>
         Redirect Path: '${contentSyncRoot.applicationRootPath}'
     </p>
+    <p>
+        Application Id: '${contentSyncRoot.applicationName}'
+    </p>
+    <p>
+        Is Application Root Configured : ${contentSyncRoot.applicationRootConfigured}
+    </p>
 
     <sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"
          data-sly-call="${clientLib.js @ categories='ionic-aem-apps.content-sync.all'}" />
