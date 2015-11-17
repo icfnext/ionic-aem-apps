@@ -3,7 +3,7 @@
     <script type="text/javascript" src="/cordova.js"></script>
     <script>
         // Redirect to the following path once init has finished
-        var successRedirectPath = '${contentSyncRoot.applicationRootPath}';
+        var successRedirectPath = '${contentSyncRoot.applicationRootPath @ context="scriptString"}';
 
         var initializationComplete = function(error, localContentPath) {
             if (error) {
@@ -20,7 +20,7 @@
         var initializeApplication = function() {
             alert('deviceReady fired.  initialization about to start.');
             var contentInitializer = CQ.mobile.contentInit({
-                id: '${contentSyncRoot.applicationName}'
+                id: '${contentSyncRoot.applicationName @ context="scriptString"}'
             });
             contentInitializer.initializeApplication(initializationComplete);
         };
