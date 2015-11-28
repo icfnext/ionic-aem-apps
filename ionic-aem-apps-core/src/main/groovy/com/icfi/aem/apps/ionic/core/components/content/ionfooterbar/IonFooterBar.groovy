@@ -7,6 +7,7 @@ import com.citytechinc.cq.component.annotations.widgets.Switch
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Default
 import org.apache.sling.models.annotations.Model
+import org.apache.sling.models.annotations.Optional
 
 import javax.inject.Inject
 import javax.inject.Named
@@ -21,6 +22,7 @@ public class IonFooterBar {
     @Inject @Default(booleanValues = false)
     boolean alwaysShow
 
+    @Optional
     @Inject @Named("footer-content")
     List<Resource> footerContent
 
