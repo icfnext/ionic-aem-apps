@@ -24,45 +24,26 @@
 
     <repositories>
         <repository>
-            <id>localinstance</id>
-            <name>AEM localinstance</name>
-            <url>http://localhost:4502/maven/repository</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
             <id>citytech-public</id>
             <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>citytech-private</id>
-            <url>http://nexus.citytech.ctmsp.com/content/groups/CITYTECH-Private/</url>
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>citytech-public-releases</id>
+            <url>http://nexus.citytech.ctmsp.com/content/repositories/public-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>citytech-public-snapshots</id>
+            <url>http://nexus.citytech.ctmsp.com/content/repositories/public-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <pluginRepositories>
-        <pluginRepository>
-            <id>localinstance</id>
-            <name>AEM localinstance</name>
-            <url>http://localhost:4502/maven/repository</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
         <pluginRepository>
             <id>citytech-public</id>
             <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>citytech-private</id>
-            <url>http://nexus.citytech.ctmsp.com/content/groups/CITYTECH-Private/</url>
         </pluginRepository>
     </pluginRepositories>
 
