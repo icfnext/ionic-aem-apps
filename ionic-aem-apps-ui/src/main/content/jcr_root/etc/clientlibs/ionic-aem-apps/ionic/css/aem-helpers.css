@@ -1,0 +1,8 @@
+html.aem-AuthorLayer-Preview,
+html.aem-AuthorLayer-Edit {
+    height: 100%;
+}
+
+html.aem-AuthorLayer-Preview body.platform-ready {
+    height: 100%;
+}
