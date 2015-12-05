@@ -6,4 +6,5 @@
           jcr:primaryType="cq:Component"
           angularController="LifecycleBroadcastCtrl"
           requiredAngularModules="[icfi.aem.apps.ionic.lifecyclebroadcast.controller]"
+          requiredCordovaPlugins="[cordova-plugin-file-transfer,phonegap-plugin-contentsync]"
           sling:resourceSuperType="wcm/foundation/components/page" />
