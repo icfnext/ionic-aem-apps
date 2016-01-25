@@ -131,7 +131,12 @@ public class DefaultApplicationRoot implements ApplicationRoot {
     }
 
     public String getPath() {
-        return rootPage.getPath();
+        return rootPage.getParent().getPath();
+    }
+
+    public String getApplicationDirectory() {
+        String path = rootPage.getParent().getPath();
+        return path.substring(rootPage.getParent().getPath().lastIndexOf("/") + 1);
     }
 
     private List<ApplicationState> buildApplicationStates(List<PageDecorator> pages) {

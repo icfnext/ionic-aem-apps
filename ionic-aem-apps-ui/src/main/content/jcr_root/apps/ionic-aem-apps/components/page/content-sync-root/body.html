@@ -1,42 +1,41 @@
 <body data-sly-use.contentSyncRoot="com.icfi.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot">
 
-    <script type="text/javascript" src="/cordova.js"></script>
-    <script>
-        // Redirect to the following path once init has finished
-        var successRedirectPath = '${contentSyncRoot.applicationRootPath @ context="scriptString"}';
+    <script data-sly-test="${wcmmode.disabled}" type="text/javascript" src="/cordova.js"></script>
+    <script data-sly-test="${wcmmode.disabled}">
 
-        var initializationComplete = function(error, localContentPath) {
-            if (error) {
-                alert("ContentSync init error: " + error);
-                return console.error("ContentSync init error: " + error);
-            }
+        document.addEventListener('deviceready', function(){
 
-            // App was successfully initialized. Redirect to the new local content path.
-            alert("ContentSync success. Returned path: [" + localContentPath + "]");
-            console.log("ContentSync success. Returned path: [" + localContentPath + "]");
-            return window.location.href = localContentPath + successRedirectPath;
-        };
+            icfi.services.contentsync.init(['${contentSyncRoot.applicationRootPath @ context="scriptString"}',
+                '${contentSyncRoot.applicationParentDirectoy @ context="scriptString"}',
+                '${contentSyncRoot.applicationName @ context="scriptString"}',
+                ${contentSyncRoot.closeSplashPage @ context="scriptString"}]);
+            icfi.services.contentsync.sync();
 
-        var initializeApplication = function() {
-            alert('deviceReady fired.  initialization about to start.');
-            var contentInitializer = CQ.mobile.contentInit({
-                id: '${contentSyncRoot.applicationName @ context="scriptString"}'
-            });
-            contentInitializer.initializeApplication(initializationComplete);
-        };
+        }, false);
 
-        // Begin initialization once Cordova bridge is ready
-        document.addEventListener('deviceready', initializeApplication, false)
     </script>
-    <p>
-        Redirect Path: '${contentSyncRoot.applicationRootPath}'
-    </p>
-    <p>
-        Application Id: '${contentSyncRoot.applicationName}'
-    </p>
-    <p>
-        Is Application Root Configured : ${contentSyncRoot.applicationRootConfigured}
-    </p>
+    <div data-sly-test="${contentSyncRoot.applicationRootConfigured}">
+        <p>The Content Sync page allows an application to call for updates on start up.
+            The updates take place on load of the application and are hidden from view by the splash screen.
+            Once the updates are complete the splash screen is hidden and the user can now access the newly updated application
+        </p>
+        <p>
+            The application will redirect to the application route located at: '${contentSyncRoot.applicationRootPath}'
+        </p>
+        <p data-sly-test="${contentSyncRoot.closeSplashPage}">
+            The application is currently configured to close the splash screen automatically.
+            After updates are complete the splash screen will close and the redirect to the application root will take place.  For a more
+            seamless experience set auto close splash screen to false and close the splash screen manually in the application root.
+        </p>
+        <p data-sly-test="${!contentSyncRoot.closeSplashPage}">
+            The application is currently configured for manual closure of the splash screen.  The application root is responsible for closing
+            the splash screen once the application is ready for the user.
+        </p>
+    </div>
+    <div data-sly-test="${!contentSyncRoot.applicationRootConfigured}">
+        <p>ERROR:  An application root is not configured at the same level as the content sync page.
+        </p>
+    </div>
 
     <sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"
          data-sly-call="${clientLib.js @ categories='ionic-aem-apps.content-sync.all'}" />

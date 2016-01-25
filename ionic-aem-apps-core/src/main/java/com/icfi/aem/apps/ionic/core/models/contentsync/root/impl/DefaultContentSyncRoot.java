@@ -15,6 +15,7 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
     private final String applicationRootPath;
     private final String applicationName;
     private final boolean applicationRootConfigured;
+    private final String applicationParentDirectoy;
 
     public DefaultContentSyncRoot(PageDecorator rootPage) {
 
@@ -33,8 +34,11 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
         this.applicationRootConfigured = (this.applicationRoot == null) || applicationRootPath.isEmpty()  ?
                 false : true;
 
-        this.applicationName = (this.applicationRoot != null) ? this.applicationRoot.getApplicationName() : null;
+        this.applicationParentDirectoy = this.applicationRoot.getApplicationDirectory();
 
+        this.applicationRoot.getPath();
+
+        this.applicationName = (this.applicationRoot != null) ? this.applicationRoot.getApplicationName() : null;
     }
 
     public String getApplicationRootPath() {
@@ -47,5 +51,13 @@ public class DefaultContentSyncRoot implements ContentSyncRoot {
 
     public boolean isApplicationRootConfigured() {
         return applicationRootConfigured;
+    }
+
+    public String getApplicationParentDirectoy() {
+        return applicationParentDirectoy;
+    }
+
+    public boolean isCloseSplashPage() {
+        return rootPage.get("autoCloseSplashScreen", false);
     }
 }

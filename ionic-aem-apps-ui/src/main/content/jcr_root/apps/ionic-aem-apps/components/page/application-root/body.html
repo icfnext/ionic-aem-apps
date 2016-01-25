@@ -3,7 +3,7 @@
     <sly data-sly-test="${isIonicAemAppMode}">
         <ion-nav-view></ion-nav-view>
 
-        <script data-sly-test="${wcmmode.publish}" type="text/javascript" src="/cordova.js"></script>
+        <script data-sly-test="${wcmmode.disabled}" type="text/javascript" src="/cordova.js"></script>
 
         <sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"
              data-sly-call="${clientLib.js @ categories='ionic-1.0.0'}" />

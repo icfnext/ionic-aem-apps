@@ -29,4 +29,6 @@ public interface ApplicationRoot {
     Set<String> getRequiredPlugins();
 
     String getPath();
+
+    String getApplicationDirectory();
 }

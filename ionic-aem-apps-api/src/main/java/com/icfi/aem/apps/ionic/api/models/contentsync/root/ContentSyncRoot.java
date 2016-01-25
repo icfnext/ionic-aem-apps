@@ -9,4 +9,7 @@ public interface ContentSyncRoot {
     String getApplicationName();
 
     boolean isApplicationRootConfigured();
+
+    boolean isCloseSplashPage();
+
 }

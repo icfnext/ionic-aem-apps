@@ -3,12 +3,6 @@
           jcr:primaryType="cq:Panel"
           title="Content Sync">
     <items jcr:primaryType="cq:WidgetCollection">
-        <applicationRootPath
-                jcr:primaryType="cq:Widget"
-                fieldLabel="Application Root Path"
-                fieldDescription="The path to the application root that is redirected to after content sync completes."
-                name="./applicationRootPath"
-                xtype="pathfield"/>
         <autoCloseSplashScreen
                 jcr:primaryType="cq:Widget"
                 fieldLabel="Close Splash Screen"

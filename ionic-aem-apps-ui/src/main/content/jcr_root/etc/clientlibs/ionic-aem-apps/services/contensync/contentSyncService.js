@@ -1,92 +1,85 @@
-angular.module( 'icfi.aem.apps.ionic.contentsync.service', [] )
-    .service( 'ContentSyncService', function ( $q ) {
+/** Service wrapping the content functionality from AEM Apps. */
 
-        this.initializeApplication = function(config){
+var icfi = icfi || {};
+icfi.services = icfi.services || {};
+icfi.services.contentsync = (function(){
+    var _args = {};
+    var _applicationRootUrl = '';
+    var _packageName = '';
+    var _applicationId = '';
+    var _closeSplashScreen = false;
 
-            var deferred = $q.defer();
+    return {
 
-            config = config || {};
+        /**
+         * Initializes the content sync function
+         * @param Args
+         * [0] - path to application root.
+         * [1] - package name - matches to the directory above the application root.
+         * [2] - application id - used by adobe content sync to identify an application.
+         * [3] - closeSplashScreen - true closes it before the redirect, false leaves the closing to application root
+         */
+        init: function (Args) {
+            _args = Args;
+            _applicationRootUrl = _args[0];
+            _packageName = _args[1];
+            _applicationId = _args[2];
+            _closeSplashScreen = _args[3];
+        },
 
-            config.additionalFiles = config.additionalFiles || [];
+        /**
+         * Syncs the application and redirects to the application root
+         */
+        sync: function () {
 
-            if (!checkContentInitialize()) {
-                deferred.reject(new Error('Content init not configured.'));
-                return deferred.promise;
-            }
-
-            var contentInitializer = CQ.mobile.contentInit(config);
-
-            contentInitializer.initializeApplication(function(error,newLocation) {
-
-                if (error) {
-                    deferred.reject(error);
-                    return;
-                }
-
-                // Truthy newLocation indicates initialization was successful
-                // undefined `newLocation` indicates the app has already been initialized
-                deferred.resolve(newLocation);
+            /** Initialize the application.  Does this need to be done everytime?  */
+            var contentInitializer = CQ.mobile.contentInit({
+                id: _applicationId
             });
 
-            return deferred.promise;
-        };
+            contentInitializer.initializeApplication(function (error, localContentPath) {
+                if (error) {
+                    return console.error("ContentSync error. - InitializeApplication: " + error);
+                }
 
-        this.isContentPackageUpdateAvailable = function(contentPackageName) {
+                console.log("ContentSync success. Returned path: [" + localContentPath + "]");
 
-            var deferred = $q.defer();
-
-            if (!checkContentUpdate()) {
-                deferred.reject(new Error('Content sync not configured.'));
-                return deferred.promise;
-            }
-
-            var contentUpdater = CQ.mobile.contentUpdate();
-
-            contentUpdater.isContentPackageUpdateAvailable(contentPackageName,
-                function callback(error, isUpdateAvailable) {
-                    if (error) {
-                        deferred.reject(error);
-                    }
-
-                    if (isUpdateAvailable) {
-                        deferred.resolve(true);
-
-                    } else {
-                        deferred.resolve(false);
-                    }
+                var contentUpdater = CQ.mobile.contentUpdate({
+                    id: _applicationId
                 });
 
-            return deferred.promise;
-        };
+                /** Initialize doesn't do a pull, so the pull needs to happen here. */
+                contentUpdater.isContentPackageUpdateAvailable(_packageName,
+                    function callback(error, isUpdateAvailable) {
+                        if (error) {
+                            return console.error("ContentUpdate error. - ContentPackageUpdateAvailable: " + error);
+                        }
 
-        this.updateContentPackage = function(contentPackageName){
+                        if (isUpdateAvailable) {
+                            contentUpdater.updateContentPackageByName(_packageName,
+                                function callback(error, pathToContent) {
+                                    if (error) {
+                                        return console.error("ContentUpdate error. - updateContentPackageByName: " + error);
+                                    }
 
-            var deferred = $q.defer();
+                                    if (_closeSplashScreen) {
+                                        navigator.splashscreen.hide();
+                                    }
 
-            if (!checkContentUpdate()) {
-                deferred.reject(new Error('Content sync not configured.'));
-                return deferred.promise;
-            }
+                                    console.log("ContentSync success. Returned pathToContent: [" + pathToContent + "]");
+                                    return window.location.href = localContentPath + _applicationRootUrl;
+                                });
+                        }
+                        else{
+                            if (_closeSplashScreen) {
+                                navigator.splashscreen.hide();
+                            }
+                            return window.location.href = localContentPath + _applicationRootUrl;
+                        }
+                    });
+            });
+        }
+    }
 
-            var contentUpdater = CQ.mobile.contentUpdate();
+}());
 
-            contentUpdater.updateContentPackageByName(contentPackageName,
-                function callback(error, pathToContent) {
-                    if (error) {
-                        deferred.reject('Content package update error: ' + error);
-                    }
-
-                    deferred.resolve(true);
-                });
-
-            return deferred.promise;
-        };
-
-        var checkContentUpdate = function(){
-            return CQ && CQ.mobile && CQ.mobile.contentUpdate;
-        };
-
-        var checkContentInitialize = function(){
-            return CQ && CQ.mobile && CQ.mobile.contentInit;
-        };
-    });
