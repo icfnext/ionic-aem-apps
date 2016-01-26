@@ -1,4 +1,4 @@
-angular.module( 'icfi.aem.apps.ionic.lifecyclebroadcast.controller',
+angular.module( 'citytechinc.aem.apps.ionic.lifecyclebroadcast.controller',
     [ 'ionic' ] )
     .controller( 'LifecycleBroadcastCtrl', function ( $scope, $log ) {
 

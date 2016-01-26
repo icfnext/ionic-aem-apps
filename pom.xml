@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.icfi.aem.apps.ionic</groupId>
+    <groupId>com.citytechinc.aem.apps.ionic</groupId>
     <artifactId>ionic-aem-apps</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>

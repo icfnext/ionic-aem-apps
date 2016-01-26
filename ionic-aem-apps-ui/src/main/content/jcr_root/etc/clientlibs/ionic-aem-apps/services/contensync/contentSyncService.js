@@ -1,8 +1,8 @@
 /** Service wrapping the content functionality from AEM Apps. */
 
-var icfi = icfi || {};
-icfi.services = icfi.services || {};
-icfi.services.contentsync = (function(){
+var citytechinc = citytechinc || {};
+citytechinc.services = citytechinc.services || {};
+citytechinc.services.contentsync = (function(){
     var _args = {};
     var _applicationRootUrl = '';
     var _packageName = '';

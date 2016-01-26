@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>com.icfi.aem.apps.ionic</groupId>
+        <groupId>com.citytechinc.aem.apps.ionic</groupId>
         <artifactId>ionic-aem-apps</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -35,10 +35,10 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>${project.parent.organization.name}</Bundle-Vendor>
-                        <Export-Package>!*.impl,com.icfi.aem.apps.ionic.core.*</Export-Package>
+                        <Export-Package>!*.impl,com.citytechinc.aem.apps.ionic.core.*</Export-Package>
                         <Import-Package>!com.citytechinc.aem.bedrock.core.components.*,!javassist</Import-Package>
                         <Require-Bundle>org.apache.sling.models.api</Require-Bundle>
-                        <Sling-Model-Packages>com.icfi.aem.apps.ionic</Sling-Model-Packages>
+                        <Sling-Model-Packages>com.citytechinc.aem.apps.ionic</Sling-Model-Packages>
                         <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
                 </configuration>
@@ -189,7 +189,7 @@
 
         <!-- API -->
         <dependency>
-            <groupId>com.icfi.aem.apps.ionic</groupId>
+            <groupId>com.citytechinc.aem.apps.ionic</groupId>
             <artifactId>ionic-aem-apps-api</artifactId>
             <version>${ionicaemapps.api.version}</version>
         </dependency>

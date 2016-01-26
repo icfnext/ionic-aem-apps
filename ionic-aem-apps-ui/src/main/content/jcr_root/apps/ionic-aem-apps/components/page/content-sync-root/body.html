@@ -1,15 +1,15 @@
-<body data-sly-use.contentSyncRoot="com.icfi.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot">
+<body data-sly-use.contentSyncRoot="com.citytechinc.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot">
 
     <script data-sly-test="${wcmmode.disabled}" type="text/javascript" src="/cordova.js"></script>
     <script data-sly-test="${wcmmode.disabled}">
 
         document.addEventListener('deviceready', function(){
 
-            icfi.services.contentsync.init(['${contentSyncRoot.applicationRootPath @ context="scriptString"}',
+            citytechinc.services.contentsync.init(['${contentSyncRoot.applicationRootPath @ context="scriptString"}',
                 '${contentSyncRoot.applicationParentDirectoy @ context="scriptString"}',
                 '${contentSyncRoot.applicationName @ context="scriptString"}',
                 ${contentSyncRoot.closeSplashPage @ context="scriptString"}]);
-            icfi.services.contentsync.sync();
+            citytechinc.services.contentsync.sync();
 
         }, false);
 

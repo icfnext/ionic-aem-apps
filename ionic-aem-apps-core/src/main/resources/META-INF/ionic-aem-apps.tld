@@ -6,11 +6,11 @@
 
     <tlib-version>${project.parent.version}</tlib-version>
     <short-name>ionic</short-name>
-    <uri>http://www.icfi.com/taglibs/ionic-aem-apps</uri>
+    <uri>http://www.citytechinc.com/taglibs/ionic-aem-apps</uri>
 
     <tag>
         <name>suppressDecoration</name>
-        <tag-class>com.icfi.aem.apps.ionic.core.tags.SuppressDecorationTag</tag-class>
+        <tag-class>com.citytechinc.aem.apps.ionic.core.tags.SuppressDecorationTag</tag-class>
         <attribute>
             <name>test</name>
             <required>false</required>
