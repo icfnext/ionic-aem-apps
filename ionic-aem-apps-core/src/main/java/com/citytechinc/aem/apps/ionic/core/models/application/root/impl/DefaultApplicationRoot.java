@@ -131,7 +131,7 @@ public class DefaultApplicationRoot implements ApplicationRoot {
     }
 
     public String getPath() {
-        return rootPage.getParent().getPath();
+        return rootPage.getPath();
     }
 
     public String getApplicationDirectory() {
