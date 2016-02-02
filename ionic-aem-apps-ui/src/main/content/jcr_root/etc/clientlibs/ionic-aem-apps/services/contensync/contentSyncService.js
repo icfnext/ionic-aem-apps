@@ -52,7 +52,8 @@ citytechinc.services.contentsync = (function(){
                 contentUpdater.isContentPackageUpdateAvailable(_packageName,
                     function callback(error, isUpdateAvailable) {
                         if (error) {
-                            return console.error("ContentUpdate error. - ContentPackageUpdateAvailable: " + error);
+                            console.error("ContentUpdate error. - ContentPackageUpdateAvailable: " + error);
+                            return window.location.href = localContentPath + _applicationRootUrl;
                         }
 
                         if (isUpdateAvailable) {
