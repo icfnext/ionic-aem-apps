@@ -16,6 +16,24 @@
     <version>0.6.0-SNAPSHOT</version>
     <name>Ionic AEM Apps AEM Website</name>
 
+    <organization>
+        <name>ICF | Olson</name>
+        <url>https://icfolson.com/</url>
+    </organization>
+
+    <url>https://github.com/Citytechinc/ionic-aem-apps</url>
+
+    <developers>
+        <developer>
+            <name>Pat McLoughlin</name>
+            <email>patrick.mcloughlin@icfi.com</email>
+        </developer>
+        <developer>
+            <name>Paul Michelotti</name>
+            <email>paul.michelotti@icfi.com</email>
+        </developer>
+    </developers>
+
     <modules>
         <module>ionic-aem-apps-api</module>
         <module>ionic-aem-apps-core</module>
