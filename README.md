@@ -141,9 +141,12 @@ is to be set to a multivalue String indicating the modules required.
 
 ### Required Cordova Plugins
 
-When a custom component requires the inclusion of a particular Cordova/Phone-Gap plugin as part of the build of the 
-native application this requirement is to be called out by setting the `requiredCordovaPlugins` property of the 
-`.content.xml` associated with the component.  This is to be set to a multivalue String indicating the modules required.
+If your component or application development requires the usage of Cordova/Phone-Gap plugins, these plugins must be 
+listed as `plugin` elements of your project's config.xml file or added at application build time using the appropriate 
+ CLI commands. 
+ 
+If you are starting your project using the [AEM Apps Ionic Archetype]() this file will be found under 
+`/content/phonegap/[project name]/shell/jcr:content/pge-app/app-content/phonegap/www/config.xml`.
 
 ## Content Sync 
 
