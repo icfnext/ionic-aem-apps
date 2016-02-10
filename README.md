@@ -145,7 +145,7 @@ If your component or application development requires the usage of Cordova/Phone
 listed as `plugin` elements of your project's config.xml file or added at application build time using the appropriate 
  CLI commands. 
  
-If you are starting your project using the [AEM Apps Ionic Archetype]() this file will be found under 
+If you are starting your project using the [AEM Apps Ionic Archetype](https://github.com/Citytechinc/aem-apps-ionic-maven-archetype) this file will be found under 
 `/content/phonegap/[project name]/shell/jcr:content/pge-app/app-content/phonegap/www/config.xml`.
 
 ## Content Sync 
