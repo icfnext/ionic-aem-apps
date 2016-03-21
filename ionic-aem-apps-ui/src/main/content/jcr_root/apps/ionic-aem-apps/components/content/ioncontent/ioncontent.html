@@ -3,6 +3,6 @@
     <h2>Ion-Content</h2>
     <sly data-sly-resource="${'./state-content' @ resourceType='foundation/components/parsys'}"></sly>
 </div>
-<ion-content data-sly-test="${isIonicAemAppMode}" scroll="${!ioncontent.scrollDisabled}" data-pagename="${ioncontent.pageName}">
+<ion-content data-sly-test="${isIonicAemAppMode}" scroll="${!ioncontent.scrollDisabled ? 'true' : 'false'}" data-pagename="${ioncontent.pageName}">
     <sly data-sly-resource="${'./state-content' @ resourceType='foundation/components/parsys'}"></sly>
 </ion-content>
