@@ -2,6 +2,7 @@ package com.citytechinc.aem.apps.ionic.core.components.page.sidemenusapplication
 
 import com.citytechinc.aem.bedrock.core.components.AbstractComponent
 import org.apache.sling.api.resource.Resource
+import org.apache.sling.models.annotations.Default
 import org.apache.sling.models.annotations.Model;
 
 import javax.inject.Inject;
@@ -14,7 +15,7 @@ public class SideMenusApplicationState extends AbstractComponent {
     public static final String LEFT_MENU_SIDE = "left"
     public static final String RIGHT_MENU_SIDE = "right"
 
-    @Inject
+    @Inject @Default(values = [])
     def List<String> menuSides
 
     public boolean isUsesLeftSideMenu() {
