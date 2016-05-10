@@ -1,7 +1,7 @@
 package com.citytechinc.aem.apps.ionic.core.models.contentsync.root.impl;
 
 import com.citytechinc.aem.apps.ionic.core.predicates.application.root.ApplicationRootPagePredicate;
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
 import com.citytechinc.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 import com.citytechinc.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot;
 

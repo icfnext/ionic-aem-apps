@@ -1,6 +1,6 @@
 package com.citytechinc.aem.apps.ionic.core.components.content.ioncontent
 
-import com.citytechinc.aem.bedrock.api.components.annotations.AutoInstantiate
+import com.icfolson.aem.library.api.components.annotations.AutoInstantiate
 import com.citytechinc.cq.component.annotations.Component
 import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.widgets.Switch

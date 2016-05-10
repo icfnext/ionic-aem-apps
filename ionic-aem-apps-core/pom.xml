@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.citytechinc.aem.apps.ionic</groupId>
         <artifactId>ionic-aem-apps</artifactId>
-        <version>0.6.0-SNAPSHOT</version>
+        <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -36,7 +36,7 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>${project.parent.organization.name}</Bundle-Vendor>
                         <Export-Package>!*.impl,com.citytechinc.aem.apps.ionic.core.*</Export-Package>
-                        <Import-Package>!com.citytechinc.aem.bedrock.core.components.*,!javassist</Import-Package>
+                        <Import-Package>!com.icfolson.aem.library.core.components.*,!javassist</Import-Package>
                         <Require-Bundle>org.apache.sling.models.api</Require-Bundle>
                         <Sling-Model-Packages>com.citytechinc.aem.apps.ionic</Sling-Model-Packages>
                         <DynamicImport-Package>*</DynamicImport-Package>
@@ -136,7 +136,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.jcr.resource</artifactId>
+            <artifactId>org.apache.sling.scripting.api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
@@ -204,18 +204,18 @@
             <artifactId>cq-content-sync</artifactId>
         </dependency>
 
-        <!-- Bedrock library -->
+        <!-- AEM Library -->
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-api</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-models</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-models</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-core</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-core</artifactId>
         </dependency>
 
         <!-- Component Annotation -->

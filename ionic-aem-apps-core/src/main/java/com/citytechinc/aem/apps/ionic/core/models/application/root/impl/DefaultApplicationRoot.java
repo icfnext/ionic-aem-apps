@@ -2,8 +2,8 @@ package com.citytechinc.aem.apps.ionic.core.models.application.root.impl;
 
 import com.adobe.cq.mobile.angular.data.util.FrameworkContentExporterUtils;
 import com.citytechinc.aem.apps.ionic.core.models.application.state.impl.DefaultApplicationState;
-import com.citytechinc.aem.bedrock.api.node.ComponentNode;
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.icfolson.aem.library.api.node.ComponentNode;
+import com.icfolson.aem.library.api.page.PageDecorator;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;

@@ -5,5 +5,5 @@
         <exclude pattern="/etc/designs/ionic-aem-apps/jcr:content(/.*)?"/>
     </filter>
     <filter root="/etc/clientlibs/ionic-aem-apps"/>
-    <filter root="/etc/packages/bedrock/bedrock-ui-${bedrock.version}.zip"/>
+    <filter root="/etc/packages/aem-library/aem-library-ui-${aem-library.version}.zip"/>
 </workspaceFilter>
