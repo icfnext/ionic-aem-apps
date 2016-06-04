@@ -1,8 +1,8 @@
 <sly data-sly-use.ioncontent="com.citytechinc.aem.apps.ionic.core.components.content.ioncontent.IonContent"></sly>
 <div data-sly-test="${!isIonicAemAppMode}" class="ion-content" data-pagename="${ioncontent.pageName}">
     <h2>Ion-Content</h2>
-    <sly data-sly-resource="${'./state-content' @ resourceType='foundation/components/parsys'}"></sly>
+    <sly data-sly-resource="${'./state-content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
 </div>
 <ion-content data-sly-test="${isIonicAemAppMode}" scroll="${!ioncontent.scrollDisabled ? 'true' : 'false'}" data-pagename="${ioncontent.pageName}">
-    <sly data-sly-resource="${'./state-content' @ resourceType='foundation/components/parsys'}"></sly>
+    <sly data-sly-resource="${'./state-content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
 </ion-content>
