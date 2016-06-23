@@ -186,6 +186,14 @@
             <groupId>com.adobe.granite.osgi.wrapper</groupId>
             <artifactId>com.adobe.granite.osgi.wrapper.guava</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-webservice-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.ui.clientlibs</artifactId>
+        </dependency>
 
         <!-- API -->
         <dependency>

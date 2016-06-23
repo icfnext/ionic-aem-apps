@@ -2,6 +2,9 @@ package com.citytechinc.aem.apps.ionic.core.models.application.root.impl;
 
 import com.adobe.cq.mobile.angular.data.util.FrameworkContentExporterUtils;
 import com.citytechinc.aem.apps.ionic.core.models.application.state.impl.DefaultApplicationState;
+import com.day.cq.wcm.api.components.ComponentManager;
+import com.day.cq.wcm.webservicesupport.Configuration;
+import com.day.cq.wcm.webservicesupport.ConfigurationManager;
 import com.icfolson.aem.library.api.node.ComponentNode;
 import com.icfolson.aem.library.api.page.PageDecorator;
 import com.google.common.base.Optional;
@@ -16,6 +19,7 @@ import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -104,6 +108,20 @@ public class DefaultApplicationRoot implements ApplicationRoot {
             if (typedResource != null) {
                 applicationModules.addAll(typedResource.getResourceType().getAsListInherited(ANGULAR_REQUIRED_MODULES_KEY, String.class));
             }
+        }
+
+        ConfigurationManager configurationManager = rootPage.getContentResource().getResourceResolver().adaptTo(ConfigurationManager.class);
+
+        for(Iterator<Configuration> configurations = configurationManager.getConfigurations(rootPage.getContentResource()); configurations.hasNext();) {
+            Configuration currentConfiguration = configurations.next();
+
+            //TODO: Refactor so this adaptation isn't in the FOR loop
+            //TODO: Determine if we need to make this come from an admin resource resolver
+            ComponentManager componentManager = currentConfiguration.getContentResource().getResourceResolver().adaptTo(ComponentManager.class);
+
+            applicationModules.addAll(Lists.newArrayList(
+                    componentManager.getComponentOfResource(currentConfiguration.getContentResource()).getProperties().get(ApplicationRoot.ANGULAR_REQUIRED_MODULES_KEY, new String[]{})));
+
         }
 
         return applicationModules;

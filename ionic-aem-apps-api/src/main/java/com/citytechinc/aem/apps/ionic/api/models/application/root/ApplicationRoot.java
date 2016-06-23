@@ -11,6 +11,7 @@ public interface ApplicationRoot {
     String RESOURCE_TYPE = "ionic-aem-apps/components/page/application-root";
     String ANGULAR_REQUIRED_MODULES_KEY = "requiredAngularModules";
     String REQUIRED_CORDOVA_PLUGINS_KEY = "requiredCordovaPlugins";
+    String REQUIRED_CLIENT_LIBRARY_CATEGORIES = "requiredClientLibraryCategories";
 
     String getInitialStateUrl() throws InvalidApplicationConfigurationException;
 
