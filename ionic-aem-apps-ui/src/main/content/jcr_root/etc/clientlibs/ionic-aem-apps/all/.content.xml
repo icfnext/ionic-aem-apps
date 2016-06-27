@@ -2,5 +2,5 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:ClientLibraryFolder"
           categories="[ionic-aem-apps.all]"
-          embed="[ionic-aem-apps.controllers,cq.mobile.foundation.angular,cq.mobile.content-sync,ionic-aem-apps.services.contentsync]"/>
+          embed="[ionic-aem-apps.controllers,cq.mobile.foundation.angular,cq.mobile.content-sync,ionic-aem-apps.services.contentsync,ionic-aem-apps.hacks]"/>
 
