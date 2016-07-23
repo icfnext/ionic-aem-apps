@@ -2,8 +2,8 @@ package com.citytechinc.aem.apps.ionic.core.adapters;
 
 import com.citytechinc.aem.apps.ionic.core.models.contentsync.root.impl.DefaultContentSyncRoot;
 import com.citytechinc.aem.apps.ionic.core.predicates.contentsync.root.ContentSyncRootPagePredicate;
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
-import com.citytechinc.aem.bedrock.api.page.PageManagerDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageManagerDecorator;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -19,7 +19,7 @@ import org.osgi.framework.Constants;
         @Property(name = Constants.SERVICE_DESCRIPTION, value = "ContentSyncRoot Adapter Factory"),
         @Property(name = SlingConstants.PROPERTY_ADAPTABLE_CLASSES, value = {
                 "org.apache.sling.api.resource.Resource",
-                "com.citytechinc.aem.bedrock.api.page.PageDecorator"
+                "com.icfolson.aem.library.api.page.PageDecorator"
         }),
         @Property(name = SlingConstants.PROPERTY_ADAPTER_CLASSES, value = {
                 "com.citytechinc.aem.apps.ionic.api.models.contentsync.root.ContentSyncRoot"

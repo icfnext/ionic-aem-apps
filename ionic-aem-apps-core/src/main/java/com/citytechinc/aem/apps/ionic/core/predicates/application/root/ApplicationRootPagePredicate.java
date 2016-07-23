@@ -1,6 +1,6 @@
 package com.citytechinc.aem.apps.ionic.core.predicates.application.root;
 
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
 import com.google.common.base.Predicate;
 import com.citytechinc.aem.apps.ionic.api.models.application.root.ApplicationRoot;
 

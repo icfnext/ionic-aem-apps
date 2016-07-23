@@ -1,6 +1,6 @@
 package com.citytechinc.aem.apps.ionic.core.resource.impl;
 
-import com.citytechinc.aem.bedrock.api.node.ComponentNode;
+import com.icfolson.aem.library.api.node.ComponentNode;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.citytechinc.aem.apps.ionic.api.resource.ResourceType;

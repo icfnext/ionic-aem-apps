@@ -3,7 +3,7 @@ package com.citytechinc.aem.apps.ionic.core.adapters;
 import com.citytechinc.aem.apps.ionic.core.models.application.state.impl.DefaultApplicationState;
 import com.citytechinc.aem.apps.ionic.core.predicates.application.root.ApplicationRootPagePredicate;
 import com.citytechinc.aem.apps.ionic.core.predicates.application.root.ApplicationStatePagePredicate;
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
 import com.google.common.base.Optional;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Properties;
@@ -20,7 +20,7 @@ import org.osgi.framework.Constants;
         @Property(name = Constants.SERVICE_DESCRIPTION, value = "ApplicationState Adapter Factory"),
         @Property(name = SlingConstants.PROPERTY_ADAPTABLE_CLASSES, value = {
                 "org.apache.sling.api.resource.Resource",
-                "com.citytechinc.aem.bedrock.api.page.PageDecorator"
+                "com.icfolson.aem.library.api.page.PageDecorator"
         }),
         @Property(name = SlingConstants.PROPERTY_ADAPTER_CLASSES, value = {
                 "com.citytechinc.aem.apps.ionic.api.models.application.state.ApplicationState"

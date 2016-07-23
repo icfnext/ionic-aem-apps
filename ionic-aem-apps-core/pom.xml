@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.citytechinc.aem.apps.ionic</groupId>
         <artifactId>ionic-aem-apps</artifactId>
-        <version>0.5.1</version>
+        <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -36,7 +36,7 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Vendor>${project.parent.organization.name}</Bundle-Vendor>
                         <Export-Package>!*.impl,com.citytechinc.aem.apps.ionic.core.*</Export-Package>
-                        <Import-Package>!com.citytechinc.aem.bedrock.core.components.*,!javassist</Import-Package>
+                        <Import-Package>!com.icfolson.aem.library.core.components.*,!javassist</Import-Package>
                         <Require-Bundle>org.apache.sling.models.api</Require-Bundle>
                         <Sling-Model-Packages>com.citytechinc.aem.apps.ionic</Sling-Model-Packages>
                         <DynamicImport-Package>*</DynamicImport-Package>
@@ -122,6 +122,10 @@
             <groupId>com.day.cq.dam</groupId>
             <artifactId>cq-dam-api</artifactId>
         </dependency>
+	<dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.models.api</artifactId>
+	</dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.api</artifactId>
@@ -136,7 +140,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.jcr.resource</artifactId>
+            <artifactId>org.apache.sling.scripting.api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
@@ -145,6 +149,10 @@
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.rewriter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.json</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -186,6 +194,23 @@
             <groupId>com.adobe.granite.osgi.wrapper</groupId>
             <artifactId>com.adobe.granite.osgi.wrapper.guava</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-webservice-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.ui.clientlibs</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
 
         <!-- API -->
         <dependency>
@@ -204,18 +229,18 @@
             <artifactId>cq-content-sync</artifactId>
         </dependency>
 
-        <!-- Bedrock library -->
+        <!-- AEM Library -->
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-api</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-models</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-models</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.citytechinc.aem.bedrock</groupId>
-            <artifactId>bedrock-core</artifactId>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-core</artifactId>
         </dependency>
 
         <!-- Component Annotation -->

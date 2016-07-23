@@ -1,8 +1,8 @@
 <sly data-sly-use.ionfooterbar="com.citytechinc.aem.apps.ionic.core.components.content.ionfooterbar.IonFooterBar"></sly>
 <div data-sly-test="${!isIonicAemAppMode}" class="ion-footer-bar" data-pagename="${currentPage.name}">
     <h2>Ion-Footer-Bar</h2>
-    <sly data-sly-resource="${'./footer-content' @ resourceType='foundation/components/parsys'}"></sly>
+    <sly data-sly-resource="${'./footer-content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
 </div>
 <ion-footer-bar data-sly-test="${isIonicAemAppMode}" data-pagename="${currentPage.name}">
-    <sly data-sly-resource="${'./footer-content' @ resourceType='foundation/components/parsys'}"></sly>
+    <sly data-sly-resource="${'./footer-content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
 </ion-footer-bar>

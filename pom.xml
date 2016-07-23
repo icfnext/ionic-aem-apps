@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>com.citytechinc.aem.bedrock</groupId>
-        <artifactId>bedrock</artifactId>
-        <version>4.0.3</version>
+        <groupId>com.icfolson.aem.library</groupId>
+        <artifactId>aem-library</artifactId>
+        <version>7.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.citytechinc.aem.apps.ionic</groupId>
     <artifactId>ionic-aem-apps</artifactId>
     <packaging>pom</packaging>
-    <version>0.5.1</version>
+    <version>0.7.0-SNAPSHOT</version>
     <name>Ionic AEM Apps AEM Website</name>
 
     <organization>
@@ -57,6 +57,17 @@
             <id>citytech-public</id>
             <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
         </repository>
+        <repository>
+            <id>localinstance</id>
+            <name>Local Instance</name>
+            <url>http://localhost:4502/maven/repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <distributionManagement>
@@ -82,9 +93,9 @@
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
-        <bedrock.version>4.0.3</bedrock.version>
+        <aem-library.version>7.0.0</aem-library.version>
         <component.plugin.version>4.0.0</component.plugin.version>
-        <ionicaemapps.api.version>0.5.1</ionicaemapps.api.version>
+        <ionicaemapps.api.version>0.7.0-SNAPSHOT</ionicaemapps.api.version>
 
         <!-- defaults -->
         <package.skip>true</package.skip>
@@ -179,32 +190,42 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.0</version>
+            </dependency>
 
-            <!-- Bedrock -->
+            <!-- AEM Library -->
             <dependency>
-                <groupId>com.citytechinc.aem.bedrock</groupId>
-                <artifactId>bedrock-core</artifactId>
-                <version>${bedrock.version}</version>
+                <groupId>com.icfolson.aem.library</groupId>
+                <artifactId>aem-library-core</artifactId>
+                <version>${aem-library.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.citytechinc.aem.bedrock</groupId>
-                <artifactId>bedrock-api</artifactId>
-                <version>${bedrock.version}</version>
+                <groupId>com.icfolson.aem.library</groupId>
+                <artifactId>aem-library-api</artifactId>
+                <version>${aem-library.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.citytechinc.aem.bedrock</groupId>
-                <artifactId>bedrock-models</artifactId>
-                <version>${bedrock.version}</version>
+                <groupId>com.icfolson.aem.library</groupId>
+                <artifactId>aem-library-models</artifactId>
+                <version>${aem-library.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.citytechinc.aem.bedrock</groupId>
-                <artifactId>bedrock-ui</artifactId>
-                <version>${bedrock.version}</version>
+                <groupId>com.icfolson.aem.library</groupId>
+                <artifactId>aem-library-ui</artifactId>
+                <version>${aem-library.version}</version>
                 <type>zip</type>
             </dependency>
 
             <!-- AEM Apps Libraries -->
-            <!-- TODO: Is there a new version of this? -->
+            <!-- TODO: Is there a new version of this? Do we even need this? -->
             <dependency>
                 <groupId>com.adobe.cq.mobile</groupId>
                 <artifactId>cq-mobile-phonegap-wcm-core</artifactId>

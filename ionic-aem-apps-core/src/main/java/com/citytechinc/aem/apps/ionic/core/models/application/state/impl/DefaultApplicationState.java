@@ -1,6 +1,6 @@
 package com.citytechinc.aem.apps.ionic.core.models.application.state.impl;
 
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.citytechinc.aem.apps.ionic.api.models.application.root.ApplicationRoot;

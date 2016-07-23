@@ -11,6 +11,7 @@
              data-sly-call="${clientLib.js @ categories='ionic-aem-apps.all'}" />
         <sly data-sly-include="js_application_clientlibs.html" />
         <script src="${currentPage.name}.angular-app-module.js"></script>
+        <div data-sly-resource="${'cloudservices' @ resourceType='cq/cloudserviceconfigs/components/servicecomponents'}" data-sly-unwrap></div>
     </sly>
     <sly data-sly-test="${!isIonicAemAppMode}">
         <sly data-sly-include="root_author.html" />

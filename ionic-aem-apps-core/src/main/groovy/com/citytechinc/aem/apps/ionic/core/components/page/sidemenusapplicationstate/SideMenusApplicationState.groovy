@@ -1,6 +1,6 @@
 package com.citytechinc.aem.apps.ionic.core.components.page.sidemenusapplicationstate;
 
-import com.citytechinc.aem.bedrock.core.components.AbstractComponent
+import com.icfolson.aem.library.core.components.AbstractComponent
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Default
 import org.apache.sling.models.annotations.Model;

@@ -1,7 +1,7 @@
 package com.citytechinc.aem.apps.ionic.core.contentsync.handler;
 
-import com.citytechinc.aem.bedrock.api.page.PageDecorator;
-import com.citytechinc.aem.bedrock.api.page.PageManagerDecorator;
+import com.icfolson.aem.library.api.page.PageDecorator;
+import com.icfolson.aem.library.api.page.PageManagerDecorator;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.day.cq.contentsync.handler.AbstractSlingResourceUpdateHandler;
 import com.day.cq.contentsync.config.ConfigEntry;
