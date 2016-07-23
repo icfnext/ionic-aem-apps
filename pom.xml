@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.icfolson.aem.library</groupId>
         <artifactId>aem-library</artifactId>
-        <version>7.0.0-SNAPSHOT</version>
+        <version>7.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -93,7 +93,7 @@
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
-        <aem-library.version>7.0.0-SNAPSHOT</aem-library.version>
+        <aem-library.version>7.0.0</aem-library.version>
         <component.plugin.version>4.0.0</component.plugin.version>
         <ionicaemapps.api.version>0.7.0-SNAPSHOT</ionicaemapps.api.version>
 
@@ -190,6 +190,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.0</version>
+            </dependency>
 
             <!-- AEM Library -->
             <dependency>
