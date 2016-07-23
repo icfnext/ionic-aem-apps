@@ -13,7 +13,7 @@
     <groupId>com.citytechinc.aem.apps.ionic</groupId>
     <artifactId>ionic-aem-apps</artifactId>
     <packaging>pom</packaging>
-    <version>0.6.0-SNAPSHOT</version>
+    <version>0.5.1</version>
     <name>Ionic AEM Apps AEM Website</name>
 
     <organization>
@@ -84,7 +84,7 @@
         <!-- versions -->
         <bedrock.version>4.0.3</bedrock.version>
         <component.plugin.version>4.0.0</component.plugin.version>
-        <ionicaemapps.api.version>0.6.0-SNAPSHOT</ionicaemapps.api.version>
+        <ionicaemapps.api.version>0.5.1</ionicaemapps.api.version>
 
         <!-- defaults -->
         <package.skip>true</package.skip>
