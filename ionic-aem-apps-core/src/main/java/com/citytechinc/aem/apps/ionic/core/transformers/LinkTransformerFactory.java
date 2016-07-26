@@ -15,7 +15,7 @@ import org.apache.sling.rewriter.TransformerFactory;
 @Properties(
         value = {
                 @Property(name="pipeline.mode",value="global") ,
-                @Property(name="service.ranking",value="5")
+                @Property(name="service.ranking",value="-5000")
         })
 public class LinkTransformerFactory implements TransformerFactory {
 

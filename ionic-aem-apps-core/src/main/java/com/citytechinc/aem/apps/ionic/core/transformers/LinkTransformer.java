@@ -56,6 +56,10 @@ public class LinkTransformer extends AbstractSAXPipe implements Transformer {
 
     //TODO: This is a rather naive implementation at the moment - specifically it does not handle links to pages which are not ApplicationStates well
     private String transformHref(String href) {
+        //TODO: This is a hack to get around an OOB transformer which is jacking with our hrefs before we get a stab at them
+        if (href.startsWith("application/")) {
+            return "#" + href.substring("application".length()).replace(".html", "");
+        }
         if (!href.startsWith("/") && !href.startsWith("../")) {
             return href;
         }
