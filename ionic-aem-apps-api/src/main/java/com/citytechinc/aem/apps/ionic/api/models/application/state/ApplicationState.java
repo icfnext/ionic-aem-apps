@@ -1,6 +1,7 @@
 package com.citytechinc.aem.apps.ionic.api.models.application.state;
 
 import com.citytechinc.aem.apps.ionic.api.models.application.root.ApplicationRoot;
+import com.google.common.base.Optional;
 import org.apache.sling.api.resource.Resource;
 
 public interface ApplicationState {
@@ -20,9 +21,15 @@ public interface ApplicationState {
 
     String getAngularController();
 
+    String getTitle();
+
     boolean isAbstract();
 
     boolean isStructuralState();
+
+    Optional<ApplicationState> getDirectParentState();
+
+    Optional<ApplicationState> getParentState();
 
     ApplicationRoot getApplicationRoot();
 

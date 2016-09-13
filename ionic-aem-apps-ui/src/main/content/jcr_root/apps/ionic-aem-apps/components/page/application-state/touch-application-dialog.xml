@@ -36,6 +36,20 @@
                         onText="Yes"
                         offText="No"
                         rootPath="/content" />
+                <parentStatePath
+                        cq:hideOnEdit="{Boolean}false"
+                        cq:showOnCreate="{Boolean}true"
+                        disabled="{Boolean}false"
+                        fieldLabel="Parent State"
+                        fieldDescription="Allows for overriding of the default parent state in the UI Router configuration.  Defaults to the state represented by the parent page or none if this is the top level state."
+                        jcr:primaryType="nt:unstructured"
+                        multiple="{Boolean}false"
+                        name="./parentStatePath"
+                        renderReadOnly="{Boolean}true"
+                        required="{Boolean}false"
+                        sling:resourceType="granite/ui/components/foundation/form/select">
+                    <datasource jcr:primaryType="nt:unstructured" sling:resourceType="ionic-aem-apps/components/page/application-state/parentstatedatasource"/>
+                </parentStatePath>
             </items>
         </column>
     </items>

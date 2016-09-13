@@ -94,7 +94,7 @@
 
         <!-- versions -->
         <aem-library.version>7.0.0</aem-library.version>
-        <component.plugin.version>4.0.0</component.plugin.version>
+        <component.plugin.version>4.1.2</component.plugin.version>
         <ionicaemapps.api.version>0.7.0-SNAPSHOT</ionicaemapps.api.version>
 
         <!-- defaults -->

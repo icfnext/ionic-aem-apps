@@ -31,23 +31,27 @@ public class DefaultApplicationState implements ApplicationState {
         }
 
         PageDecorator currentPage = statePage;
+        Optional<ApplicationState> parentState = getParentState();
 
-        List<String> parents = Lists.newArrayList();
+        List<String> pathParts = Lists.newArrayList();
 
-        while (currentPage != null &&
+        while ( currentPage != null &&
                 currentPage.getContentResource().isResourceType(ApplicationState.RESOURCE_TYPE) &&
-                (currentPage.getPath().equals(statePage.getPath()) || currentPage.get("isStructuralState", false))) {
+                (
+                        currentPage.getPath().equals(statePage.getPath()) ||
+                        currentPage.get("isStructuralState", false) ||
+                        (parentState.isPresent() && !parentState.get().getPath().equals(currentPage.getPath())))) {
             if (currentPage.get("isSlugState", false)) {
-                parents.add(":" + currentPage.getName());
+                pathParts.add(":" + currentPage.getName());
             }
             else {
-                parents.add(currentPage.getName());
+                pathParts.add(currentPage.getName());
             }
 
             currentPage = currentPage.getParent();
         }
 
-        url = "/" + StringUtils.join(Lists.reverse(parents), "/");
+        url = "/" + StringUtils.join(Lists.reverse(pathParts), "/");
 
         return url;
     }
@@ -61,18 +65,14 @@ public class DefaultApplicationState implements ApplicationState {
             return stateId;
         }
 
-        PageDecorator currentPage = statePage;
+        Optional<ApplicationState> parentStateOptional = getParentState();
 
-        List<String> parents = Lists.newArrayList();
-
-        while(currentPage != null && !currentPage.getContentResource().isResourceType(ApplicationRoot.RESOURCE_TYPE)) {
-            if (!currentPage.get("isStructuralState", false)) {
-                parents.add(currentPage.getName());
-            }
-            currentPage = currentPage.getParent();
+        if (parentStateOptional.isPresent()) {
+            stateId = parentStateOptional.get().getId() + "." + statePage.getName();
+            return stateId;
         }
 
-        stateId = StringUtils.join(Lists.reverse(parents), ".");
+        stateId = statePage.getName();
         return stateId;
     }
 
@@ -88,6 +88,11 @@ public class DefaultApplicationState implements ApplicationState {
         return getAngularControllerOptional().orNull();
     }
 
+    @Override
+    public String getTitle() {
+        return statePage.getTitle();
+    }
+
     public boolean isHasAngularController() {
         return getAngularControllerOptional().isPresent();
     }
@@ -98,6 +103,28 @@ public class DefaultApplicationState implements ApplicationState {
 
     public boolean isStructuralState() {
         return statePage.get("isStructuralState", false);
+    }
+
+    @Override
+    public Optional<ApplicationState> getDirectParentState() {
+        return Optional.fromNullable(statePage.getParent().adaptTo(ApplicationState.class));
+    }
+
+    @Override
+    public Optional<ApplicationState> getParentState() {
+        Optional<String> parentStatePath = statePage.get("parentStatePath", String.class);
+
+        if (parentStatePath.isPresent()) {
+            return Optional.fromNullable(statePage.getPageManager().getPage(parentStatePath.get()).adaptTo(ApplicationState.class));
+        }
+
+        Optional<ApplicationState> directParentState = getDirectParentState();
+
+        while (directParentState.isPresent() && directParentState.get().isStructuralState()) {
+            directParentState = directParentState.get().getDirectParentState();
+        }
+
+        return directParentState;
     }
 
     public ApplicationRoot getApplicationRoot() {
