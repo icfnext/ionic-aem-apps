@@ -4,15 +4,16 @@ A library supporting the construction of Hybrid mobile applications using AEM Ap
 
 ## Overview
 
-AEM Apps is a module of AEM which can be used to create authorable experiences which present as native mobile applications. 
-These applications leverage the Cordova or PhoneGap framework and as such are colloquially referred to as Hybrid applications.
+AEM Apps (now known as the Cordova aspect of AEM Mobile) is a module of AEM which can be used to create authorable 
+experiences which present as native mobile applications. These applications leverage the Cordova framework 
+and as such are colloquially referred to as Hybrid applications.
 
 To learn more about Cordova visit [https://cordova.apache.org/](https://cordova.apache.org/)
  
 ### Ionic
 
 This library enforces the use of the Ionic Framework.  This framework wraps Cordova providing a suite of build and test 
-tools.  Ionic is also build on Angular, extending many of its common development idioms bringing them in line with the 
+tools.  Ionic is also built on Angular, extending many of its common development idioms bringing them in line with the 
 expectations of a mobile application.  Numerous widgets, transition effects, and touch behaviors are provided by 
 Ionic to make your Cordova application feel as close to a true native application as possible. 
  
@@ -86,6 +87,17 @@ Structural States are states which exist solely to provide structure to the URL 
 states rendering.  These might be used in cases where content needs to be aranged to allow both for slug states and 
 standard states in a reasonable content structure.  Structural States would never be presented to an end user and 
 do not exist as actual application states in the Angular application.
+
+#### Specifying Parent State
+
+The Application Page Properties for Application States expose a Parent State selection input.  The options available 
+as selections are all ancestors of the current state up to the Application Root.  Setting this property overrides the 
+default state inheritance writen to the `$stateProvider` configuration which is to treat a child page as a child state 
+of its direct non-structural parent.  Usage of this mechanism can be useful in situations where semantic page structures 
+would otherwise be precluded by the state content injection entailed by state hierarchy.  For example, consider the pages 
+`/root/main/lists` and `/root/main/lists/:listId`.  Here it would be desirable for the former to present a list of lists 
+while the later presents an individual list.  Both of these are to inherit visually from `main` which is accomplished 
+by setting the parent state of the `:listId` page to `main`.
 
 ### Side Menus Application State
 

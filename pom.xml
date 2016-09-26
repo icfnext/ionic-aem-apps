@@ -6,15 +6,15 @@
     <parent>
         <groupId>com.icfolson.aem.library</groupId>
         <artifactId>aem-library</artifactId>
-        <version>7.0.0</version>
+        <version>7.0.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.citytechinc.aem.apps.ionic</groupId>
     <artifactId>ionic-aem-apps</artifactId>
     <packaging>pom</packaging>
-    <version>0.7.0-SNAPSHOT</version>
-    <name>Ionic AEM Apps AEM Website</name>
+    <version>0.7.0</version>
+    <name>Ionic AEM Apps</name>
 
     <organization>
         <name>ICF | Olson</name>
@@ -93,9 +93,9 @@
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
-        <aem-library.version>7.0.0</aem-library.version>
+        <aem-library.version>7.0.1</aem-library.version>
         <component.plugin.version>4.1.2</component.plugin.version>
-        <ionicaemapps.api.version>0.7.0-SNAPSHOT</ionicaemapps.api.version>
+        <ionicaemapps.api.version>0.7.0</ionicaemapps.api.version>
 
         <!-- defaults -->
         <package.skip>true</package.skip>
