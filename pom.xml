@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.icfolson.aem.library</groupId>
         <artifactId>aem-library</artifactId>
-        <version>7.0.1</version>
+        <version>8.1.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -93,7 +93,7 @@
         <core.artifactId>ionic-aem-apps-core</core.artifactId>
 
         <!-- versions -->
-        <aem-library.version>7.0.1</aem-library.version>
+        <aem-library.version>8.1.0</aem-library.version>
         <component.plugin.version>4.1.2</component.plugin.version>
         <ionicaemapps.api.version>0.8.0-SNAPSHOT</ionicaemapps.api.version>
 
@@ -190,11 +190,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- TODO: REMOVE
             <dependency>
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>1</version>
             </dependency>
+            -->
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
@@ -238,6 +240,12 @@
                 <version>5.8.26</version>
             </dependency>
 
+            <!-- SLING -->
+            <dependency>
+                <groupId>org.apache.cocoon</groupId>
+                <artifactId>cocoon-xml</artifactId>
+                <version>2.0.4</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
